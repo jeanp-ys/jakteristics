@@ -155,3 +155,36 @@ def test_with_kdtree_not_same_point_count():
     assert not np.any(np.isnan(features))
 
     assert features.shape == (10, len(FEATURE_NAMES))
+
+
+def test_ckdtree_build():
+    points = np.random.random((3, 1000)).T
+
+    kdtree = jakteristics.cKDTree(points)
+
+    assert kdtree.n == points.shape[0]
+    assert kdtree.m == points.shape[1]
+
+def test_ckdtree_query():
+    points = np.random.random((3, 1000)).T
+    query_point = points[0]
+
+    kdtree = jakteristics.cKDTree(points)
+
+    distances, indices = kdtree.query(query_point, k=5)
+
+    assert len(distances) == 5
+    assert len(indices) == 5
+    assert all(idx < points.shape[0] for idx in indices)
+
+def test_ckdtree_query_ball_point():
+    points = np.random.random((3, 1000)).T
+    query_point = points[0]
+    radius = 0.1
+
+    kdtree = jakteristics.cKDTree(points)
+
+    indices = kdtree.query_ball_point(query_point, radius)
+
+    assert isinstance(indices, list)
+    assert all(idx < points.shape[0] for idx in indices)
