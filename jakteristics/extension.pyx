@@ -3,6 +3,7 @@
 
 import numpy as np
 import multiprocessing
+import sys
 
 from cpython.mem cimport PyMem_Malloc, PyMem_Realloc, PyMem_Free
 from libc.string cimport memset
@@ -10,7 +11,7 @@ from libcpp cimport bool
 cimport openmp
 cimport cython
 from cython.parallel import prange, parallel
-from libc.math cimport fabs, pow, log, sqrt
+from libc.math cimport fabs, pow, log, sqrt, NAN
 cimport numpy as np
 from libcpp.vector cimport vector
 from libcpp.map cimport map as cppmap
@@ -258,64 +259,121 @@ cdef void free_result_vectors(vector[np.intp_t] *** threaded_vvres, int num_thre
             PyMem_Free(threaded_vvres[i])
         PyMem_Free(threaded_vvres)
 
-def compute_scalars_features(np.ndarray[double, ndim=2] points, float radius, list scalar_fields):
+@cython.boundscheck(False)
+@cython.wraparound(False)
+@cython.cdivision(True)
+def compute_scalars_features(np.ndarray[double, ndim=2] points, double radius, list scalar_fields):
     """
     Calcule pour chaque point et chaque champ scalaire :
     - la moyenne, l'écart-type, le min et le max des valeurs des voisins dans le rayon donné.
     Retourne une liste de tableaux numpy (N, 4) pour chaque champ scalaire.
     """
     cdef int n_points = points.shape[0]
+    if n_points == 0:
+        return [np.empty((0, 4), dtype=np.float64) for _ in scalar_fields]
+
     cdef int n_fields = len(scalar_fields)
-    cdef int i, j, thread_id
+    cdef int i
+    cdef int field_idx
+    
     cdef cKDTree kdtree = cKDTree(points)
     cdef list results = []
-    cdef np.ndarray[np.float32_t, ndim=2] arr
-    cdef np.ndarray field
-    cdef int num_threads
-    import multiprocessing
-    num_threads = multiprocessing.cpu_count()
-    cdef double radius_arr[3]
-    radius_arr[0] = radius_arr[1] = radius_arr[2] = radius
-    cdef double p = 2.0
-    cdef double eps_scipy = 0.0
-    cdef vector[np.intp_t] *** threaded_vvres
-    cdef int return_length = <int> False
-    cdef Py_ssize_t n_neighbors
-    cdef object neighbor_idx
-    cdef np.ndarray neighbors
-    cdef np.ndarray[np.intp_t, ndim=1] np_indices
+    cdef np.ndarray[double, ndim=2] arr
+    cdef int num_threads = multiprocessing.cpu_count()
+    cdef double radius_arr[1]
+    radius_arr[0] = radius
+    cdef double p_norm = 2.0
+    cdef double eps_kdtree = 0.0
+    cdef vector[np.intp_t]*** threaded_vvres
     threaded_vvres = init_result_vectors(num_threads)
+    cdef int return_length_flag = <int>False
+    cdef np.ndarray[double, ndim=1] field_c
+    cdef double[:] field_mv
+    cdef double[:, :] arr_mv
+    cdef int current_point_idx
+    cdef int current_thread_id
+    cdef Py_ssize_t num_neighbors_for_point
+    cdef vector[np.intp_t]* neighbors_vec_ptr
+
     try:
-        for field in scalar_fields:
-            arr = np.full((n_points, 4), np.nan, dtype=np.float32)
-            with nogil:
-                for i in prange(n_points, schedule='static', num_threads=num_threads):
-                    thread_id = openmp.omp_get_thread_num()
-                    threaded_vvres[thread_id][0].clear()
+        for field_idx, field_obj in enumerate(scalar_fields):
+            if not isinstance(field_obj, np.ndarray) or field_obj.ndim != 1 or field_obj.shape[0] != n_points:
+                results.append(np.full((n_points, 4), np.nan, dtype=np.float64))
+                continue
+
+            field_c = np.ascontiguousarray(field_obj, dtype=np.float64)
+            field_mv = field_c
+            arr = np.full((n_points, 4), np.nan, dtype=np.float64)
+            arr_mv = arr
+
+            with nogil, parallel(num_threads=num_threads):
+                for i in prange(n_points, schedule='static'):
+                    current_point_idx = i
+                    current_thread_id = openmp.omp_get_thread_num()
+                    neighbors_vec_ptr = threaded_vvres[current_thread_id][0]
+                    neighbors_vec_ptr.clear()
                     query_ball_point(
                         kdtree.cself,
-                        &points[i, 0],
+                        &points[current_point_idx, 0],
                         &radius_arr[0],
-                        p,
-                        eps_scipy,
-                        1,
-                        threaded_vvres[thread_id],
-                        return_length,
+                        p_norm,
+                        eps_kdtree,
+                        1, 
+                        threaded_vvres[current_thread_id],
+                        return_length_flag
                     )
-                    n_neighbors = threaded_vvres[thread_id][0].size()
-                    if n_neighbors == 0:
-                        continue
-                    with gil:
-                        np_indices = np.empty(n_neighbors, dtype=np.intp)
-                        for j in range(n_neighbors):
-                            np_indices[j] = threaded_vvres[thread_id][0][0][j]
-                        neighbors = np.asarray(field)[np_indices]
-                        arr[i, 0] = np.mean(neighbors)
-                        arr[i, 1] = np.std(neighbors)
-                        arr[i, 2] = np.min(neighbors)
-                        arr[i, 3] = np.max(neighbors)
-            results.append(arr)
+                    num_neighbors_for_point = neighbors_vec_ptr.size()
+                    if num_neighbors_for_point != 0:
+                        compute_stats_double(field_mv, neighbors_vec_ptr, arr_mv, current_point_idx)
+            results.append(np.asarray(arr))
     finally:
         free_result_vectors(threaded_vvres, num_threads)
+        
     return results
 
+@cython.cdivision(True)
+cdef inline void compute_stats_double(
+    double[:] field_values,
+    vector[np.intp_t]* neighbor_indices_vec,
+    double[:, :] arr_mv,
+    int current_point_idx
+) nogil: 
+    cdef Py_ssize_t num_neighbors = neighbor_indices_vec[0].size()
+    cdef Py_ssize_t k
+    cdef double current_value
+    cdef double mean_val, std_dev, min_val, max_val
+    cdef double sum_of_values = 0.0
+    cdef double sum_of_squared_diffs = 0.0
+
+    if num_neighbors == 0:
+        arr_mv[current_point_idx, 0] = NAN
+        arr_mv[current_point_idx, 1] = NAN
+        arr_mv[current_point_idx, 2] = NAN
+        arr_mv[current_point_idx, 3] = NAN
+        return
+
+    min_val = field_values[neighbor_indices_vec[0][0]]
+    max_val = min_val
+
+    for k in range(num_neighbors):
+        current_value = field_values[neighbor_indices_vec[0][k]]
+        sum_of_values += current_value
+        if current_value < min_val:
+            min_val = current_value
+        if current_value > max_val:
+            max_val = current_value
+
+    mean_val = sum_of_values / num_neighbors
+
+    if num_neighbors > 1:
+        for k in range(num_neighbors):
+            current_value = field_values[neighbor_indices_vec[0][k]]
+            sum_of_squared_diffs += (current_value - mean_val) * (current_value - mean_val)
+        std_dev = sqrt(sum_of_squared_diffs / num_neighbors)
+    else:
+        std_dev = 0.0
+
+    arr_mv[current_point_idx, 0] = mean_val
+    arr_mv[current_point_idx, 1] = std_dev
+    arr_mv[current_point_idx, 2] = min_val
+    arr_mv[current_point_idx, 3] = max_val
