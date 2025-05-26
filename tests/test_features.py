@@ -160,7 +160,7 @@ def test_with_kdtree_not_same_point_count():
 def test_ckdtree_build():
     points = np.random.random((3, 1000)).T
 
-    kdtree = jakteristics.cKDTree(points)
+    kdtree = jakteristics.cKDTree(points.copy())
 
     assert kdtree.n == points.shape[0]
     assert kdtree.m == points.shape[1]
@@ -169,7 +169,7 @@ def test_ckdtree_query():
     points = np.random.random((3, 1000)).T
     query_point = points[0]
 
-    kdtree = jakteristics.cKDTree(points)
+    kdtree = jakteristics.cKDTree(points.copy())
 
     distances, indices = kdtree.query(query_point, k=5)
 
@@ -182,7 +182,7 @@ def test_ckdtree_query_ball_point():
     query_point = points[0]
     radius = 0.1
 
-    kdtree = jakteristics.cKDTree(points)
+    kdtree = jakteristics.cKDTree(points.copy())
 
     indices = kdtree.query_ball_point(query_point, radius)
 
