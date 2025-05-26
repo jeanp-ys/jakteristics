@@ -157,17 +157,19 @@ def test_with_kdtree_not_same_point_count():
     assert features.shape == (10, len(FEATURE_NAMES))
 
 
-def test_compute_features_custom():
+def test_compute_scalars_features():
     n_points = 1000
     points = np.random.random((n_points, 3)) * 10
     scalar_fields = [np.random.random(n_points) for _ in range(3)]
     radius = 0.15
 
-    features = extension.compute_features_custom(
-        points, radius, scalar_fields, feature_names=FEATURE_NAMES
+    features_names = ["mean", "std", "min", "max"]
+    features_list = extension.compute_scalars_features(
+        points, radius, scalar_fields, feature_names=features_names
     )
 
-    assert features.shape == (n_points, len(FEATURE_NAMES) + len(scalar_fields) * 4)
+    assert len(features_list) == len(scalar_fields)
+    assert features_list[0].shape == (n_points, 4 * len(scalar_fields))
 
     kdtree = jakteristics.cKDTree(points.copy())
     for i in range(n_points):
@@ -175,9 +177,11 @@ def test_compute_features_custom():
         if not neighbor_idx:
             continue  # skip points with no neighbors
         for j, field in enumerate(scalar_fields):
-            values = np.array(field)[neighbor_idx]
-            start_idx = len(FEATURE_NAMES) + j * 4
-            assert np.allclose(features[i, start_idx + 0], np.mean(values))
-            assert np.allclose(features[i, start_idx + 1], np.std(values))
-            assert np.allclose(features[i, start_idx + 2], np.min(values))
-            assert np.allclose(features[i, start_idx + 3], np.max(values))
+            neighbors = field[neighbor_idx]
+            mean = np.mean(neighbors)
+            std = np.std(neighbors)
+            min_val = np.min(neighbors)
+            max_val = np.max(neighbors)
+
+            expected_features = np.array([mean, std, min_val, max_val])
+            assert np.allclose(features_list[j][i, 4 * j : 4 * (j + 1)], expected_features)
