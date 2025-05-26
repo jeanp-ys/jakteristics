@@ -1,4 +1,5 @@
 from pathlib import Path
+import time
 
 import laspy
 import numpy as np
@@ -188,3 +189,84 @@ def test_ckdtree_query_ball_point():
 
     assert isinstance(indices, list)
     assert all(idx < points.shape[0] for idx in indices)
+
+
+def _check_scalar_stats_correctness(points, scalar_fields, radius, features_list, kdtree=None, p=2, eps=0.0):
+    import jakteristics
+    n_points = points.shape[0]
+    if kdtree is None:
+        kdtree = jakteristics.cKDTree(points.copy())
+    for i in range(0, n_points, max(1, n_points // 100)):
+        neighbor_idx = kdtree.query_ball_point(points[i], radius, p=p, eps=eps)
+        if not neighbor_idx:
+            continue
+        for j, field in enumerate(scalar_fields):
+            neighbors = field[neighbor_idx]
+            mean = np.mean(neighbors)
+            std = np.std(neighbors)
+            min_val = np.min(neighbors)
+            max_val = np.max(neighbors)
+            expected_features = np.array([mean, std, min_val, max_val])
+            assert np.allclose(features_list[j][i, :], expected_features)
+
+
+def test_compute_scalars_stats():
+    n_points = 1000
+    points = np.random.random((n_points, 3)) * 10
+    scalar_fields = [np.random.random(n_points) for _ in range(2)]
+    radius = 0.2
+    # Only test default args and shape
+    features_list = extension.compute_scalars_stats(points, radius, scalar_fields)
+    assert isinstance(features_list, list)
+    assert len(features_list) == len(scalar_fields)
+    assert features_list[0].shape == (n_points, 4)
+    _check_scalar_stats_correctness(points, scalar_fields, radius, features_list)
+
+
+def test_compute_scalars_stats_num_threads():
+    n_points = 1000
+    points = np.random.random((n_points, 3)) * 10
+    scalar_fields = [np.random.random(n_points) for _ in range(2)]
+    radius = 0.2
+    features_list = extension.compute_scalars_stats(points, radius, scalar_fields, num_threads=2)
+    assert isinstance(features_list, list)
+    assert len(features_list) == len(scalar_fields)
+    assert features_list[0].shape == (n_points, 4)
+    _check_scalar_stats_correctness(points, scalar_fields, radius, features_list)
+
+
+def test_compute_scalars_stats_kdtree():
+    n_points = 1000
+    points = np.random.random((n_points, 3)) * 10
+    scalar_fields = [np.random.random(n_points) for _ in range(2)]
+    radius = 0.2
+    kdtree = jakteristics.cKDTree(points.copy())
+    features_list = extension.compute_scalars_stats(points, radius, scalar_fields, kdtree=kdtree)
+    assert isinstance(features_list, list)
+    assert len(features_list) == len(scalar_fields)
+    assert features_list[0].shape == (n_points, 4)
+    _check_scalar_stats_correctness(points, scalar_fields, radius, features_list, kdtree=kdtree)
+
+
+def test_compute_scalars_stats_euclidean_distance_false():
+    n_points = 1000
+    points = np.random.random((n_points, 3)) * 10
+    scalar_fields = [np.random.random(n_points) for _ in range(2)]
+    radius = 0.2
+    features_list = extension.compute_scalars_stats(points, radius, scalar_fields, euclidean_distance=False)
+    assert isinstance(features_list, list)
+    assert len(features_list) == len(scalar_fields)
+    assert features_list[0].shape == (n_points, 4)
+    _check_scalar_stats_correctness(points, scalar_fields, radius, features_list, p=1)
+
+
+def test_compute_scalars_stats_eps():
+    n_points = 1000
+    points = np.random.random((n_points, 3)) * 10
+    scalar_fields = [np.random.random(n_points) for _ in range(2)]
+    radius = 0.2
+    features_list = extension.compute_scalars_stats(points, radius, scalar_fields, eps=0.01)
+    assert isinstance(features_list, list)
+    assert len(features_list) == len(scalar_fields)
+    assert features_list[0].shape == (n_points, 4)
+    _check_scalar_stats_correctness(points, scalar_fields, radius, features_list, eps=0.01)
