@@ -163,13 +163,13 @@ def test_compute_scalars_features():
     scalar_fields = [np.random.random(n_points) for _ in range(3)]
     radius = 0.15
 
-    features_names = ["mean", "std", "min", "max"]
     features_list = extension.compute_scalars_features(
-        points, radius, scalar_fields, feature_names=features_names
+        points, radius, scalar_fields
     )
-
+    
+    assert isinstance(features_list, list)
     assert len(features_list) == len(scalar_fields)
-    assert features_list[0].shape == (n_points, 4 * len(scalar_fields))
+    assert features_list[0].shape == (n_points, 4) # mean, std, min, max for each scalar field
 
     kdtree = jakteristics.cKDTree(points.copy())
     for i in range(n_points):
