@@ -158,21 +158,13 @@ def test_with_kdtree_not_same_point_count():
     assert features.shape == (10, len(FEATURE_NAMES))
 
 
-def test_compute_scalars_stats():
-    n_points = 1000
-    points = np.random.random((n_points, 3)) * 10
-    scalar_fields = [np.random.random(n_points) for _ in range(2)]
-    radius = 0.2
-    # Only test default args and shape
-    features_list = extension.compute_scalars_stats(points, radius, scalar_fields)
-    assert isinstance(features_list, list)
-    assert len(features_list) == len(scalar_fields)
-    assert features_list[0].shape == (n_points, 4)
-
-    # Validate results for a few points
-    kdtree = jakteristics.cKDTree(points.copy())
+def _check_scalar_stats_correctness(points, scalar_fields, radius, features_list, kdtree=None, p=2, eps=0.0):
+    import jakteristics
+    n_points = points.shape[0]
+    if kdtree is None:
+        kdtree = jakteristics.cKDTree(points.copy())
     for i in range(0, n_points, max(1, n_points // 100)):
-        neighbor_idx = kdtree.query_ball_point(points[i], radius)
+        neighbor_idx = kdtree.query_ball_point(points[i], radius, p=p, eps=eps)
         if not neighbor_idx:
             continue
         for j, field in enumerate(scalar_fields):
@@ -183,6 +175,19 @@ def test_compute_scalars_stats():
             max_val = np.max(neighbors)
             expected_features = np.array([mean, std, min_val, max_val])
             assert np.allclose(features_list[j][i, :], expected_features)
+
+
+def test_compute_scalars_stats():
+    n_points = 1000
+    points = np.random.random((n_points, 3)) * 10
+    scalar_fields = [np.random.random(n_points) for _ in range(2)]
+    radius = 0.2
+    # Only test default args and shape
+    features_list = extension.compute_scalars_stats(points, radius, scalar_fields)
+    assert isinstance(features_list, list)
+    assert len(features_list) == len(scalar_fields)
+    assert features_list[0].shape == (n_points, 4)
+    _check_scalar_stats_correctness(points, scalar_fields, radius, features_list)
 
 
 def test_compute_scalars_stats_num_threads():
@@ -194,20 +199,7 @@ def test_compute_scalars_stats_num_threads():
     assert isinstance(features_list, list)
     assert len(features_list) == len(scalar_fields)
     assert features_list[0].shape == (n_points, 4)
-    # Validate results for a few points
-    kdtree = jakteristics.cKDTree(points.copy())
-    for i in range(0, n_points, max(1, n_points // 100)):
-        neighbor_idx = kdtree.query_ball_point(points[i], radius)
-        if not neighbor_idx:
-            continue
-        for j, field in enumerate(scalar_fields):
-            neighbors = field[neighbor_idx]
-            mean = np.mean(neighbors)
-            std = np.std(neighbors)
-            min_val = np.min(neighbors)
-            max_val = np.max(neighbors)
-            expected_features = np.array([mean, std, min_val, max_val])
-            assert np.allclose(features_list[j][i, :], expected_features)
+    _check_scalar_stats_correctness(points, scalar_fields, radius, features_list)
 
 
 def test_compute_scalars_stats_kdtree():
@@ -220,19 +212,7 @@ def test_compute_scalars_stats_kdtree():
     assert isinstance(features_list, list)
     assert len(features_list) == len(scalar_fields)
     assert features_list[0].shape == (n_points, 4)
-    # Validate results for a few points
-    for i in range(0, n_points, max(1, n_points // 100)):
-        neighbor_idx = kdtree.query_ball_point(points[i], radius)
-        if not neighbor_idx:
-            continue
-        for j, field in enumerate(scalar_fields):
-            neighbors = field[neighbor_idx]
-            mean = np.mean(neighbors)
-            std = np.std(neighbors)
-            min_val = np.min(neighbors)
-            max_val = np.max(neighbors)
-            expected_features = np.array([mean, std, min_val, max_val])
-            assert np.allclose(features_list[j][i, :], expected_features)
+    _check_scalar_stats_correctness(points, scalar_fields, radius, features_list, kdtree=kdtree)
 
 
 def test_compute_scalars_stats_euclidean_distance_false():
@@ -244,20 +224,7 @@ def test_compute_scalars_stats_euclidean_distance_false():
     assert isinstance(features_list, list)
     assert len(features_list) == len(scalar_fields)
     assert features_list[0].shape == (n_points, 4)
-    # Validate results for a few points
-    kdtree = jakteristics.cKDTree(points.copy())
-    for i in range(0, n_points, max(1, n_points // 100)):
-        neighbor_idx = kdtree.query_ball_point(points[i], radius, p=1)
-        if not neighbor_idx:
-            continue
-        for j, field in enumerate(scalar_fields):
-            neighbors = field[neighbor_idx]
-            mean = np.mean(neighbors)
-            std = np.std(neighbors)
-            min_val = np.min(neighbors)
-            max_val = np.max(neighbors)
-            expected_features = np.array([mean, std, min_val, max_val])
-            assert np.allclose(features_list[j][i, :], expected_features)
+    _check_scalar_stats_correctness(points, scalar_fields, radius, features_list, p=1)
 
 
 def test_compute_scalars_stats_eps():
@@ -269,17 +236,4 @@ def test_compute_scalars_stats_eps():
     assert isinstance(features_list, list)
     assert len(features_list) == len(scalar_fields)
     assert features_list[0].shape == (n_points, 4)
-    # Validate results for a few points
-    kdtree = jakteristics.cKDTree(points.copy())
-    for i in range(0, n_points, max(1, n_points // 100)):
-        neighbor_idx = kdtree.query_ball_point(points[i], radius, eps=0.01)
-        if not neighbor_idx:
-            continue
-        for j, field in enumerate(scalar_fields):
-            neighbors = field[neighbor_idx]
-            mean = np.mean(neighbors)
-            std = np.std(neighbors)
-            min_val = np.min(neighbors)
-            max_val = np.max(neighbors)
-            expected_features = np.array([mean, std, min_val, max_val])
-            assert np.allclose(features_list[j][i, :], expected_features)
+    _check_scalar_stats_correctness(points, scalar_fields, radius, features_list, eps=0.01)
