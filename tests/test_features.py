@@ -184,4 +184,4 @@ def test_compute_scalars_features():
             max_val = np.max(neighbors)
 
             expected_features = np.array([mean, std, min_val, max_val])
-            assert np.allclose(features_list[j][i, 4 * j : 4 * (j + 1)], expected_features)
+            assert np.allclose(features_list[j][i, :], expected_features)
