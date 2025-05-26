@@ -262,7 +262,15 @@ cdef void free_result_vectors(vector[np.intp_t] *** threaded_vvres, int num_thre
 @cython.boundscheck(False)
 @cython.wraparound(False)
 @cython.cdivision(True)
-def compute_scalars_features(np.ndarray[double, ndim=2] points, double radius, list scalar_fields):
+def compute_scalars_stats(
+    np.ndarray[double, ndim=2] points,
+    float search_radius,
+    list scalar_fields,
+    cKDTree kdtree=None,
+    int num_threads=-1,
+    bint euclidean_distance=True,
+    float eps=0.0,
+):
     """
     Calcule pour chaque point et chaque champ scalaire :
     - la moyenne, l'écart-type, le min et le max des valeurs des voisins dans le rayon donné.
@@ -275,15 +283,20 @@ def compute_scalars_features(np.ndarray[double, ndim=2] points, double radius, l
     cdef int n_fields = len(scalar_fields)
     cdef int i
     cdef int field_idx
-    
-    cdef cKDTree kdtree = cKDTree(points)
+
+    if num_threads == -1:
+        import multiprocessing
+        num_threads = multiprocessing.cpu_count()
+
+    cdef double p_norm = 2.0 if euclidean_distance else 1.0
+    cdef double eps_kdtree = eps
+    if kdtree is None:
+        kdtree = cKDTree(points)
+
     cdef list results = []
     cdef np.ndarray[double, ndim=2] arr
-    cdef int num_threads = multiprocessing.cpu_count()
     cdef double radius_arr[1]
-    radius_arr[0] = radius
-    cdef double p_norm = 2.0
-    cdef double eps_kdtree = 0.0
+    radius_arr[0] = search_radius
     cdef vector[np.intp_t]*** threaded_vvres
     threaded_vvres = init_result_vectors(num_threads)
     cdef int return_length_flag = <int>False
