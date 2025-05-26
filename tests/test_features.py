@@ -158,7 +158,7 @@ def test_with_kdtree_not_same_point_count():
 
 
 def test_compute_scalars_features():
-    n_points = 1000
+    n_points = 10**4
     points = np.random.random((n_points, 3)) * 10
     scalar_fields = [np.random.random(n_points) for _ in range(3)]
     radius = 0.15
