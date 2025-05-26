@@ -1,4 +1,5 @@
 from pathlib import Path
+import time
 
 import laspy
 import numpy as np
@@ -163,9 +164,12 @@ def test_compute_scalars_features():
     scalar_fields = [np.random.random(n_points) for _ in range(3)]
     radius = 0.15
 
+    start_time = time.time()
     features_list = extension.compute_scalars_features(
         points, radius, scalar_fields
     )
+    elapsed_time = time.time() - start_time
+    print(f"Elapsed time: {elapsed_time:.4f} seconds")
     
     assert isinstance(features_list, list)
     assert len(features_list) == len(scalar_fields)
