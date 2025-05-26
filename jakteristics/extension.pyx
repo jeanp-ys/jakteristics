@@ -257,4 +257,28 @@ cdef void free_result_vectors(vector[np.intp_t] *** threaded_vvres, int num_thre
                 del threaded_vvres[i][0]
             PyMem_Free(threaded_vvres[i])
         PyMem_Free(threaded_vvres)
-        
+
+def compute_scalars_features(np.ndarray[double, ndim=2] points, float radius, list scalar_fields):
+    """
+    Calcule pour chaque point et chaque champ scalaire :
+    - la moyenne, l'écart-type, le min et le max des valeurs des voisins dans le rayon donné.
+    Retourne une liste de tableaux numpy (N, 4) pour chaque champ scalaire.
+    """
+    cdef int n_points = points.shape[0]
+    kdtree = cKDTree(points)
+    cdef list results = []
+    cdef int i, j
+    for field in scalar_fields:
+        arr = np.full((n_points, 4), np.nan, dtype=np.float32)
+        for i in range(n_points):
+            neighbor_idx = kdtree.query_ball_point(points[i], radius)
+            if not neighbor_idx:
+                continue
+            neighbors = field[neighbor_idx]
+            arr[i, 0] = np.mean(neighbors)
+            arr[i, 1] = np.std(neighbors)
+            arr[i, 2] = np.min(neighbors)
+            arr[i, 3] = np.max(neighbors)
+        results.append(arr)
+    return results
+
