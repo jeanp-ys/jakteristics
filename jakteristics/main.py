@@ -78,3 +78,29 @@ def compute_features(
         feature_names=feature_names,
         eps=eps,
     )
+
+
+def compute_scalars_stats(
+    points: np.ndarray,
+    search_radius: float,
+    scalar_fields: list,
+    *,
+    kdtree: ckdtree.cKDTree = None,
+    num_threads: int = -1,
+    euclidean_distance: bool = True,
+    eps: float = 0.0,
+):
+    """
+    Compute mean, std, min, max for each scalar field in the neighborhood of each point.
+    Returns a list of numpy arrays (N, 4) for each scalar field.
+    """
+    points = np.ascontiguousarray(points)
+    return jakteristics.extension.compute_scalars_stats(
+        points,
+        search_radius,
+        scalar_fields,
+        kdtree=kdtree,
+        num_threads=num_threads,
+        euclidean_distance=euclidean_distance,
+        eps=eps,
+    )
