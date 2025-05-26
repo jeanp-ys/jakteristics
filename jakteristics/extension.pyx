@@ -266,25 +266,56 @@ def compute_scalars_features(np.ndarray[double, ndim=2] points, float radius, li
     """
     cdef int n_points = points.shape[0]
     cdef int n_fields = len(scalar_fields)
-    cdef int i
-    cdef object kdtree = cKDTree(points)
+    cdef int i, j, thread_id
+    cdef cKDTree kdtree = cKDTree(points)
     cdef list results = []
     cdef np.ndarray[np.float32_t, ndim=2] arr
     cdef np.ndarray field
-    cdef np.ndarray[np.float64_t, ndim=1] neighbors
+    cdef int num_threads
+    import multiprocessing
+    num_threads = multiprocessing.cpu_count()
+    cdef double radius_arr[3]
+    radius_arr[0] = radius_arr[1] = radius_arr[2] = radius
+    cdef double p = 2.0
+    cdef double eps_scipy = 0.0
+    cdef vector[np.intp_t] *** threaded_vvres
+    cdef int return_length = <int> False
+    cdef Py_ssize_t n_neighbors
     cdef object neighbor_idx
-    
-    for field in scalar_fields:
-        arr = np.full((n_points, 4), np.nan, dtype=np.float32)
-        for i in range(n_points):
-            neighbor_idx = kdtree.query_ball_point(points[i], radius)
-            if not neighbor_idx:
-                continue
-            neighbors = np.asarray(field)[neighbor_idx]
-            arr[i, 0] = np.mean(neighbors)
-            arr[i, 1] = np.std(neighbors)
-            arr[i, 2] = np.min(neighbors)
-            arr[i, 3] = np.max(neighbors)
-        results.append(arr)
+    cdef np.ndarray neighbors
+    cdef np.ndarray[np.intp_t, ndim=1] np_indices
+    threaded_vvres = init_result_vectors(num_threads)
+    try:
+        for field in scalar_fields:
+            arr = np.full((n_points, 4), np.nan, dtype=np.float32)
+            with nogil:
+                for i in prange(n_points, schedule='static', num_threads=num_threads):
+                    thread_id = openmp.omp_get_thread_num()
+                    threaded_vvres[thread_id][0].clear()
+                    query_ball_point(
+                        kdtree.cself,
+                        &points[i, 0],
+                        &radius_arr[0],
+                        p,
+                        eps_scipy,
+                        1,
+                        threaded_vvres[thread_id],
+                        return_length,
+                    )
+                    n_neighbors = threaded_vvres[thread_id][0].size()
+                    if n_neighbors == 0:
+                        continue
+                    with gil:
+                        np_indices = np.empty(n_neighbors, dtype=np.intp)
+                        for j in range(n_neighbors):
+                            np_indices[j] = threaded_vvres[thread_id][0][0][j]
+                        neighbors = np.asarray(field)[np_indices]
+                        arr[i, 0] = np.mean(neighbors)
+                        arr[i, 1] = np.std(neighbors)
+                        arr[i, 2] = np.min(neighbors)
+                        arr[i, 3] = np.max(neighbors)
+            results.append(arr)
+    finally:
+        free_result_vectors(threaded_vvres, num_threads)
     return results
 
