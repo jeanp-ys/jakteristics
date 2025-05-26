@@ -265,16 +265,22 @@ def compute_scalars_features(np.ndarray[double, ndim=2] points, float radius, li
     Retourne une liste de tableaux numpy (N, 4) pour chaque champ scalaire.
     """
     cdef int n_points = points.shape[0]
-    kdtree = cKDTree(points)
+    cdef int n_fields = len(scalar_fields)
+    cdef int i
+    cdef object kdtree = cKDTree(points)
     cdef list results = []
-    cdef int i, j
+    cdef np.ndarray[np.float32_t, ndim=2] arr
+    cdef np.ndarray field
+    cdef np.ndarray[np.float64_t, ndim=1] neighbors
+    cdef object neighbor_idx
+    
     for field in scalar_fields:
         arr = np.full((n_points, 4), np.nan, dtype=np.float32)
         for i in range(n_points):
             neighbor_idx = kdtree.query_ball_point(points[i], radius)
             if not neighbor_idx:
                 continue
-            neighbors = field[neighbor_idx]
+            neighbors = np.asarray(field)[neighbor_idx]
             arr[i, 0] = np.mean(neighbors)
             arr[i, 1] = np.std(neighbors)
             arr[i, 2] = np.min(neighbors)
