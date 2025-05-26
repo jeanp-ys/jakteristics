@@ -266,6 +266,7 @@ def compute_scalars_stats(
     np.ndarray[double, ndim=2] points,
     float search_radius,
     list scalar_fields,
+    *,
     cKDTree kdtree=None,
     int num_threads=-1,
     bint euclidean_distance=True,
