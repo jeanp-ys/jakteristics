@@ -1,0 +1,570 @@
+{
+  "improvements": {
+    "small": {
+      "1_threads": {
+        "features_basic": {
+          "speedup": 1.290719348505575,
+          "cpu_efficiency_improvement": -0.0005763502126200359,
+          "throughput_improvement": 1.290719348505575
+        },
+        "features_geometric": {
+          "speedup": 1.3312957926584672,
+          "cpu_efficiency_improvement": -1.853576166244153e-05,
+          "throughput_improvement": 1.331295792658467
+        },
+        "features_all": {
+          "speedup": 1.2897109345180626,
+          "cpu_efficiency_improvement": 0.0006627248050005141,
+          "throughput_improvement": 1.2897109345180626
+        },
+        "scalars_stats": {
+          "speedup": 0.389318202589181,
+          "cpu_efficiency_improvement": -8.926501872397186e-05,
+          "throughput_improvement": 0.38931820258918093
+        }
+      },
+      "2_threads": {
+        "features_basic": {
+          "speedup": 1.2453471404764171,
+          "cpu_efficiency_improvement": -0.030462540777106306,
+          "throughput_improvement": 1.2453471404764171
+        },
+        "features_geometric": {
+          "speedup": 1.416302829304218,
+          "cpu_efficiency_improvement": -0.022461565739935185,
+          "throughput_improvement": 1.416302829304218
+        },
+        "features_all": {
+          "speedup": 0.8688428236860636,
+          "cpu_efficiency_improvement": -0.0031442215205763624,
+          "throughput_improvement": 0.8688428236860635
+        },
+        "scalars_stats": {
+          "speedup": 0.9176325790117503,
+          "cpu_efficiency_improvement": 0.025298122139255086,
+          "throughput_improvement": 0.9176325790117503
+        }
+      },
+      "4_threads": {
+        "features_basic": {
+          "speedup": 0.8911547049683288,
+          "cpu_efficiency_improvement": 0.04317374227815751,
+          "throughput_improvement": 0.8911547049683289
+        },
+        "features_geometric": {
+          "speedup": 2.028742887576517,
+          "cpu_efficiency_improvement": -0.011003026637447011,
+          "throughput_improvement": 2.028742887576517
+        },
+        "features_all": {
+          "speedup": 0.5672623800105154,
+          "cpu_efficiency_improvement": 0.02703422192081162,
+          "throughput_improvement": 0.5672623800105154
+        },
+        "scalars_stats": {
+          "speedup": 1.1160174209727405,
+          "cpu_efficiency_improvement": -0.009971053666324114,
+          "throughput_improvement": 1.1160174209727403
+        }
+      },
+      "8_threads": {
+        "features_basic": {
+          "speedup": 1.0524217779815574,
+          "cpu_efficiency_improvement": 2.7792638534585024e-05,
+          "throughput_improvement": 1.0524217779815574
+        },
+        "features_geometric": {
+          "speedup": 0.7990504264828302,
+          "cpu_efficiency_improvement": -0.011912782662842458,
+          "throughput_improvement": 0.7990504264828302
+        },
+        "features_all": {
+          "speedup": 0.8708583319678974,
+          "cpu_efficiency_improvement": -0.03477519417671682,
+          "throughput_improvement": 0.8708583319678975
+        },
+        "scalars_stats": {
+          "speedup": 0.7258451590164617,
+          "cpu_efficiency_improvement": 0.007624346484939093,
+          "throughput_improvement": 0.7258451590164617
+        }
+      },
+      "32_threads": {
+        "features_basic": {
+          "speedup": 1.0496466399181863,
+          "cpu_efficiency_improvement": -0.010449077366697451,
+          "throughput_improvement": 1.0496466399181863
+        },
+        "features_geometric": {
+          "speedup": 0.8529601857150042,
+          "cpu_efficiency_improvement": -0.008236774045271317,
+          "throughput_improvement": 0.8529601857150042
+        },
+        "features_all": {
+          "speedup": 1.067664214501657,
+          "cpu_efficiency_improvement": -0.00130762273894805,
+          "throughput_improvement": 1.0676642145016573
+        },
+        "scalars_stats": {
+          "speedup": 1.0592966998930122,
+          "cpu_efficiency_improvement": 0.008574146632587903,
+          "throughput_improvement": 1.0592966998930122
+        }
+      }
+    },
+    "medium": {
+      "1_threads": {
+        "features_basic": {
+          "speedup": 1.0917919098125954,
+          "cpu_efficiency_improvement": -0.00019282454319990983,
+          "throughput_improvement": 1.0917919098125954
+        },
+        "features_geometric": {
+          "speedup": 1.2098384066766825,
+          "cpu_efficiency_improvement": 0.0001082199705817466,
+          "throughput_improvement": 1.2098384066766823
+        },
+        "features_all": {
+          "speedup": 1.1791725954148873,
+          "cpu_efficiency_improvement": 0.00030977334476867124,
+          "throughput_improvement": 1.1791725954148873
+        },
+        "scalars_stats": {
+          "speedup": 0.989505868826484,
+          "cpu_efficiency_improvement": -6.427779990048066e-06,
+          "throughput_improvement": 0.9895058688264841
+        }
+      },
+      "2_threads": {
+        "features_basic": {
+          "speedup": 1.2537938578839034,
+          "cpu_efficiency_improvement": -0.016624405777453055,
+          "throughput_improvement": 1.2537938578839034
+        },
+        "features_geometric": {
+          "speedup": 1.247927984059685,
+          "cpu_efficiency_improvement": -0.02147093241475828,
+          "throughput_improvement": 1.247927984059685
+        },
+        "features_all": {
+          "speedup": 1.2190958357797745,
+          "cpu_efficiency_improvement": -0.018759214191698792,
+          "throughput_improvement": 1.2190958357797743
+        },
+        "scalars_stats": {
+          "speedup": 0.9620458636811893,
+          "cpu_efficiency_improvement": -0.004665894563796291,
+          "throughput_improvement": 0.9620458636811892
+        }
+      },
+      "4_threads": {
+        "features_basic": {
+          "speedup": 1.2169225741160157,
+          "cpu_efficiency_improvement": 0.027413198089444202,
+          "throughput_improvement": 1.216922574116016
+        },
+        "features_geometric": {
+          "speedup": 1.2943204273039934,
+          "cpu_efficiency_improvement": 0.0061486336134728425,
+          "throughput_improvement": 1.2943204273039934
+        },
+        "features_all": {
+          "speedup": 1.3357166968135084,
+          "cpu_efficiency_improvement": 0.014996694821035716,
+          "throughput_improvement": 1.3357166968135084
+        },
+        "scalars_stats": {
+          "speedup": 0.8450964064539498,
+          "cpu_efficiency_improvement": -0.026679008177549757,
+          "throughput_improvement": 0.8450964064539497
+        }
+      },
+      "8_threads": {
+        "features_basic": {
+          "speedup": 0.9045091325950112,
+          "cpu_efficiency_improvement": -0.00258641913573171,
+          "throughput_improvement": 0.9045091325950111
+        },
+        "features_geometric": {
+          "speedup": 1.0082013847403708,
+          "cpu_efficiency_improvement": 0.007407541778573834,
+          "throughput_improvement": 1.0082013847403708
+        },
+        "features_all": {
+          "speedup": 0.9525985862853604,
+          "cpu_efficiency_improvement": 0.001339000693593273,
+          "throughput_improvement": 0.9525985862853604
+        },
+        "scalars_stats": {
+          "speedup": 0.916653095429906,
+          "cpu_efficiency_improvement": -0.009649610292676691,
+          "throughput_improvement": 0.9166530954299061
+        }
+      },
+      "32_threads": {
+        "features_basic": {
+          "speedup": 0.6556035856495354,
+          "cpu_efficiency_improvement": -0.004778413910074858,
+          "throughput_improvement": 0.6556035856495352
+        },
+        "features_geometric": {
+          "speedup": 1.4574195119713487,
+          "cpu_efficiency_improvement": 0.005965526599184173,
+          "throughput_improvement": 1.4574195119713487
+        },
+        "features_all": {
+          "speedup": 0.9487130262830699,
+          "cpu_efficiency_improvement": -0.003095776179712434,
+          "throughput_improvement": 0.9487130262830699
+        },
+        "scalars_stats": {
+          "speedup": 0.5567726010766951,
+          "cpu_efficiency_improvement": 4.613027635153033e-05,
+          "throughput_improvement": 0.5567726010766951
+        }
+      }
+    },
+    "large": {
+      "1_threads": {
+        "features_basic": {
+          "speedup": 1.091360002589089,
+          "cpu_efficiency_improvement": 0.001424500112838456,
+          "throughput_improvement": 1.091360002589089
+        },
+        "features_geometric": {
+          "speedup": 1.062215032433354,
+          "cpu_efficiency_improvement": -0.00024091021709315985,
+          "throughput_improvement": 1.062215032433354
+        },
+        "features_all": {
+          "speedup": 1.2801821075368414,
+          "cpu_efficiency_improvement": -2.6288740609725636e-05,
+          "throughput_improvement": 1.2801821075368414
+        },
+        "scalars_stats": {
+          "speedup": 0.9944946314552925,
+          "cpu_efficiency_improvement": -0.0001004378275422102,
+          "throughput_improvement": 0.9944946314552925
+        }
+      },
+      "2_threads": {
+        "features_basic": {
+          "speedup": 1.2990684376179082,
+          "cpu_efficiency_improvement": -0.013578170313883864,
+          "throughput_improvement": 1.2990684376179082
+        },
+        "features_geometric": {
+          "speedup": 1.276025210883242,
+          "cpu_efficiency_improvement": -0.00971094017417562,
+          "throughput_improvement": 1.276025210883242
+        },
+        "features_all": {
+          "speedup": 1.2736039707435793,
+          "cpu_efficiency_improvement": -0.015288897643309984,
+          "throughput_improvement": 1.2736039707435793
+        },
+        "scalars_stats": {
+          "speedup": 1.0280805941568745,
+          "cpu_efficiency_improvement": 0.006624306461379237,
+          "throughput_improvement": 1.0280805941568745
+        }
+      },
+      "4_threads": {
+        "features_basic": {
+          "speedup": 1.211342184409172,
+          "cpu_efficiency_improvement": -0.08426611201275025,
+          "throughput_improvement": 1.211342184409172
+        },
+        "features_geometric": {
+          "speedup": 1.2898694229049943,
+          "cpu_efficiency_improvement": -0.014738294978895672,
+          "throughput_improvement": 1.2898694229049943
+        },
+        "features_all": {
+          "speedup": 1.3175706457746723,
+          "cpu_efficiency_improvement": -0.004726008330177556,
+          "throughput_improvement": 1.3175706457746723
+        },
+        "scalars_stats": {
+          "speedup": 0.977288820123763,
+          "cpu_efficiency_improvement": 0.004301761009616767,
+          "throughput_improvement": 0.977288820123763
+        }
+      },
+      "8_threads": {
+        "features_basic": {
+          "speedup": 1.0280919465220297,
+          "cpu_efficiency_improvement": 0.000252068201205935,
+          "throughput_improvement": 1.0280919465220297
+        },
+        "features_geometric": {
+          "speedup": 1.1128085354765245,
+          "cpu_efficiency_improvement": 0.00938822248196991,
+          "throughput_improvement": 1.1128085354765245
+        },
+        "features_all": {
+          "speedup": 1.115459183085434,
+          "cpu_efficiency_improvement": -0.00945911146510936,
+          "throughput_improvement": 1.1154591830854337
+        },
+        "scalars_stats": {
+          "speedup": 1.1016995480143874,
+          "cpu_efficiency_improvement": 0.005999421092885648,
+          "throughput_improvement": 1.1016995480143874
+        }
+      },
+      "32_threads": {
+        "features_basic": {
+          "speedup": 0.8660357892377518,
+          "cpu_efficiency_improvement": -0.000883423783582693,
+          "throughput_improvement": 0.8660357892377518
+        },
+        "features_geometric": {
+          "speedup": 0.8282183870616943,
+          "cpu_efficiency_improvement": -0.0013906510827871033,
+          "throughput_improvement": 0.8282183870616943
+        },
+        "features_all": {
+          "speedup": 0.8356403895853464,
+          "cpu_efficiency_improvement": -0.005084036676387155,
+          "throughput_improvement": 0.8356403895853464
+        },
+        "scalars_stats": {
+          "speedup": 1.0081082118868476,
+          "cpu_efficiency_improvement": -0.00013607784901054076,
+          "throughput_improvement": 1.0081082118868476
+        }
+      }
+    },
+    "small_large_radius": {
+      "1_threads": {
+        "features_basic": {
+          "speedup": 0.9661171715822745,
+          "cpu_efficiency_improvement": 3.0835446462873506e-07,
+          "throughput_improvement": 0.9661171715822744
+        },
+        "features_geometric": {
+          "speedup": 1.5419478927094987,
+          "cpu_efficiency_improvement": -5.160243456225899e-05,
+          "throughput_improvement": 1.541947892709499
+        },
+        "features_all": {
+          "speedup": 0.8522254048314065,
+          "cpu_efficiency_improvement": -1.194844675855844e-05,
+          "throughput_improvement": 0.8522254048314065
+        },
+        "scalars_stats": {
+          "speedup": 0.8091726311180291,
+          "cpu_efficiency_improvement": 0.00030932142521433725,
+          "throughput_improvement": 0.8091726311180291
+        }
+      },
+      "2_threads": {
+        "features_basic": {
+          "speedup": 1.1619484694444673,
+          "cpu_efficiency_improvement": 0.1026832537232667,
+          "throughput_improvement": 1.1619484694444675
+        },
+        "features_geometric": {
+          "speedup": 1.2610389413837577,
+          "cpu_efficiency_improvement": -0.026460749546607043,
+          "throughput_improvement": 1.2610389413837577
+        },
+        "features_all": {
+          "speedup": 1.4907134514948066,
+          "cpu_efficiency_improvement": -0.010310114179499008,
+          "throughput_improvement": 1.4907134514948066
+        },
+        "scalars_stats": {
+          "speedup": 1.1346747596532532,
+          "cpu_efficiency_improvement": -0.032043363256055946,
+          "throughput_improvement": 1.1346747596532532
+        }
+      },
+      "4_threads": {
+        "features_basic": {
+          "speedup": 0.9795854914293269,
+          "cpu_efficiency_improvement": -0.05954474915618202,
+          "throughput_improvement": 0.9795854914293269
+        },
+        "features_geometric": {
+          "speedup": 1.9531165862170345,
+          "cpu_efficiency_improvement": -0.08099906818152813,
+          "throughput_improvement": 1.9531165862170348
+        },
+        "features_all": {
+          "speedup": 1.3217170540126737,
+          "cpu_efficiency_improvement": -0.09479720112583356,
+          "throughput_improvement": 1.3217170540126737
+        },
+        "scalars_stats": {
+          "speedup": 0.9643623629169686,
+          "cpu_efficiency_improvement": 0.0005996734006954441,
+          "throughput_improvement": 0.9643623629169686
+        }
+      },
+      "8_threads": {
+        "features_basic": {
+          "speedup": 0.9624077147426118,
+          "cpu_efficiency_improvement": -0.0013826912892961896,
+          "throughput_improvement": 0.9624077147426118
+        },
+        "features_geometric": {
+          "speedup": 0.9529732969608501,
+          "cpu_efficiency_improvement": -0.017155750099731637,
+          "throughput_improvement": 0.9529732969608501
+        },
+        "features_all": {
+          "speedup": 0.8819313067668654,
+          "cpu_efficiency_improvement": -0.019132123703586523,
+          "throughput_improvement": 0.8819313067668655
+        },
+        "scalars_stats": {
+          "speedup": 0.9360552986079832,
+          "cpu_efficiency_improvement": 0.0010208347842572407,
+          "throughput_improvement": 0.9360552986079831
+        }
+      },
+      "32_threads": {
+        "features_basic": {
+          "speedup": 1.024197403109914,
+          "cpu_efficiency_improvement": 0.005451627186886715,
+          "throughput_improvement": 1.024197403109914
+        },
+        "features_geometric": {
+          "speedup": 1.0466132985272898,
+          "cpu_efficiency_improvement": 0.012409281230430586,
+          "throughput_improvement": 1.0466132985272898
+        },
+        "features_all": {
+          "speedup": 1.0668409158928485,
+          "cpu_efficiency_improvement": 0.011562070431350269,
+          "throughput_improvement": 1.0668409158928485
+        },
+        "scalars_stats": {
+          "speedup": 1.122726246040925,
+          "cpu_efficiency_improvement": -0.004751666782010389,
+          "throughput_improvement": 1.122726246040925
+        }
+      }
+    },
+    "medium_large_radius": {
+      "1_threads": {
+        "features_basic": {
+          "speedup": 1.0114040821570105,
+          "cpu_efficiency_improvement": -6.45179404105134e-05,
+          "throughput_improvement": 1.0114040821570105
+        },
+        "features_geometric": {
+          "speedup": 1.1109678659495874,
+          "cpu_efficiency_improvement": 6.822336549894281e-05,
+          "throughput_improvement": 1.1109678659495874
+        },
+        "features_all": {
+          "speedup": 1.2564733379101343,
+          "cpu_efficiency_improvement": 5.9942746939989355e-05,
+          "throughput_improvement": 1.256473337910134
+        },
+        "scalars_stats": {
+          "speedup": 1.1991141653273605,
+          "cpu_efficiency_improvement": -4.202943788123026e-05,
+          "throughput_improvement": 1.1991141653273605
+        }
+      },
+      "2_threads": {
+        "features_basic": {
+          "speedup": 1.1700781769228543,
+          "cpu_efficiency_improvement": -0.025188294570553604,
+          "throughput_improvement": 1.170078176922854
+        },
+        "features_geometric": {
+          "speedup": 1.225521417415718,
+          "cpu_efficiency_improvement": -0.010397314326336171,
+          "throughput_improvement": 1.225521417415718
+        },
+        "features_all": {
+          "speedup": 1.206770803659416,
+          "cpu_efficiency_improvement": -0.02810394717986764,
+          "throughput_improvement": 1.2067708036594162
+        },
+        "scalars_stats": {
+          "speedup": 1.2609347208934263,
+          "cpu_efficiency_improvement": -0.02302612789510894,
+          "throughput_improvement": 1.2609347208934265
+        }
+      },
+      "4_threads": {
+        "features_basic": {
+          "speedup": 1.3184284021216326,
+          "cpu_efficiency_improvement": 0.02346639851870469,
+          "throughput_improvement": 1.3184284021216324
+        },
+        "features_geometric": {
+          "speedup": 1.2047303539115883,
+          "cpu_efficiency_improvement": 0.03833016391126087,
+          "throughput_improvement": 1.2047303539115883
+        },
+        "features_all": {
+          "speedup": 1.14873033554937,
+          "cpu_efficiency_improvement": 0.031305595202997694,
+          "throughput_improvement": 1.1487303355493699
+        },
+        "scalars_stats": {
+          "speedup": 1.0695890849528038,
+          "cpu_efficiency_improvement": 0.008020077620743082,
+          "throughput_improvement": 1.0695890849528036
+        }
+      },
+      "8_threads": {
+        "features_basic": {
+          "speedup": 1.22648176149492,
+          "cpu_efficiency_improvement": 0.015254640029259747,
+          "throughput_improvement": 1.2264817614949197
+        },
+        "features_geometric": {
+          "speedup": 1.0581327392379878,
+          "cpu_efficiency_improvement": 0.015909520642661712,
+          "throughput_improvement": 1.0581327392379878
+        },
+        "features_all": {
+          "speedup": 1.1636339329621999,
+          "cpu_efficiency_improvement": -0.00849824102443092,
+          "throughput_improvement": 1.1636339329621999
+        },
+        "scalars_stats": {
+          "speedup": 1.0552516294958207,
+          "cpu_efficiency_improvement": 0.003948651091912725,
+          "throughput_improvement": 1.055251629495821
+        }
+      },
+      "32_threads": {
+        "features_basic": {
+          "speedup": 1.5394516699938454,
+          "cpu_efficiency_improvement": 0.004639314609928169,
+          "throughput_improvement": 1.5394516699938454
+        },
+        "features_geometric": {
+          "speedup": 1.0938356996330694,
+          "cpu_efficiency_improvement": 0.0018118772076583523,
+          "throughput_improvement": 1.0938356996330696
+        },
+        "features_all": {
+          "speedup": 0.6993006841146026,
+          "cpu_efficiency_improvement": -0.0031422297799182652,
+          "throughput_improvement": 0.6993006841146024
+        },
+        "scalars_stats": {
+          "speedup": 1.0496649643700091,
+          "cpu_efficiency_improvement": -0.0009988974631634506,
+          "throughput_improvement": 1.0496649643700091
+        }
+      }
+    }
+  },
+  "summary": {
+    "avg_speedup": 1.0957181440762336,
+    "max_speedup": 2.028742887576517,
+    "avg_cpu_efficiency_improvement": -0.0037767805527583005,
+    "avg_throughput_improvement": 1.0957181440762338
+  }
+}

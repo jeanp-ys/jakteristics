@@ -39,8 +39,7 @@ def compute_features(
     float eps=0.0,
 ):
     cdef:
-        cppmap [string, uint8_t] features_map
-
+        int8_t[29] feature_indices  # Pre-computed feature indices (-1 = not requested)
         int64_t n_points = points.shape[0]
         double [::1, :] neighbor_points
         double [::1, :] eigenvectors
@@ -69,10 +68,16 @@ def compute_features(
     if kdtree is None:
         kdtree = cKDTree(points)
 
+    # Initialize feature indices array with -1 (not requested)
+    for i in range(29):
+        feature_indices[i] = -1
+    
+    # Pre-compute feature indices for faster lookup
     for n, name in enumerate(feature_names):
         if name not in FEATURE_NAMES:
             raise ValueError(f"Unknown feature name: {name}")
-        features_map[name.encode()] = n
+        feature_idx = FEATURE_NAMES.index(name)
+        feature_indices[feature_idx] = n
 
     radius_vector = np.full((num_threads, 3), fill_value=search_radius)
     neighbor_points = np.zeros([3, max_k_neighbors * num_threads], dtype=np.float64, order="F")
@@ -105,10 +110,12 @@ def compute_features(
             elif n_neighbors_at_id == 0:
                 continue
 
+            # Optimized memory access: copy neighbor points with better cache locality
             for j in range(n_neighbors_at_id):
                 neighbor_id = threaded_vvres[thread_id][0][0][j]
-                for k in range(3):
-                    neighbor_points[k, thread_id * max_k_neighbors + j] = kdtree.cself.raw_data[neighbor_id * 3 + k]
+                neighbor_points[0, thread_id * max_k_neighbors + j] = kdtree.cself.raw_data[neighbor_id * 3]
+                neighbor_points[1, thread_id * max_k_neighbors + j] = kdtree.cself.raw_data[neighbor_id * 3 + 1]
+                neighbor_points[2, thread_id * max_k_neighbors + j] = kdtree.cself.raw_data[neighbor_id * 3 + 2]
 
             utils.c_covariance(
                 neighbor_points[:, thread_id * max_k_neighbors:thread_id * max_k_neighbors + n_neighbors_at_id],
@@ -124,7 +131,7 @@ def compute_features(
                 eigenvalues[thread_id * 3 : thread_id * 3 + 3],
                 eigenvectors[:, thread_id * 3 : thread_id * 3 + 3],
                 features[i, :],
-                features_map,
+                feature_indices,
             )
 
     finally:
@@ -140,11 +147,11 @@ cdef inline void compute_features_from_eigenvectors(
     double [:] eigenvalues,
     double [:, :] eigenvectors,
     float [:] out,
-    cppmap [string, uint8_t] & out_map,
+    int8_t[29] feature_indices,
 ) nogil:
     cdef:
         float l1, l2, l3
-        float eigenvalue_sum
+        float eigenvalue_sum, l1_inv, eigenvalue_sum_inv
         float n0, n1, n2
         float norm
 
@@ -157,82 +164,85 @@ cdef inline void compute_features_from_eigenvectors(
 
     # Sum of eigenvalues equals the original variance of the data
     eigenvalue_sum = l1 + l2 + l3
+    l1_inv = 1.0 / l1  # Pre-compute reciprocals to avoid repeated divisions
+    eigenvalue_sum_inv = 1.0 / eigenvalue_sum
 
-    if out_map.count(b"eigenvalue1"):
-        out[out_map.at(b"eigenvalue1")] = l1
-    if out_map.count(b"eigenvalue2"):
-        out[out_map.at(b"eigenvalue2")] = l2
-    if out_map.count(b"eigenvalue3"):
-        out[out_map.at(b"eigenvalue3")] = l3
+    # Direct array access using pre-computed indices (much faster than map lookups)
+    if feature_indices[16] >= 0:  # eigenvalue1
+        out[feature_indices[16]] = l1
+    if feature_indices[17] >= 0:  # eigenvalue2
+        out[feature_indices[17]] = l2
+    if feature_indices[18] >= 0:  # eigenvalue3
+        out[feature_indices[18]] = l3
 
-    if out_map.count(b"number_of_neighbors"):
-        out[out_map.at(b"number_of_neighbors")] = number_of_neighbors
+    if feature_indices[14] >= 0:  # number_of_neighbors
+        out[feature_indices[14]] = number_of_neighbors
 
-    if out_map.count(b"eigenvalue_sum"):
-        out[out_map.at(b"eigenvalue_sum")] = eigenvalue_sum
+    if feature_indices[0] >= 0:  # eigenvalue_sum
+        out[feature_indices[0]] = eigenvalue_sum
 
-    if out_map.count(b"omnivariance"):
-        out[out_map.at(b"omnivariance")] = pow(l1 * l2 * l3, 1.0 / 3.0)
+    if feature_indices[1] >= 0:  # omnivariance
+        out[feature_indices[1]] = pow(l1 * l2 * l3, 1.0 / 3.0)
 
-    if out_map.count(b"eigenentropy"):
-        out[out_map.at(b"eigenentropy")] = -(l1 * log(l1) + l2 * log(l2) + l3 * log(l3))
+    if feature_indices[2] >= 0:  # eigenentropy
+        out[feature_indices[2]] = -(l1 * log(l1) + l2 * log(l2) + l3 * log(l3))
 
     # Anisotropy is the difference between the most principal direction of the point subset.
     # Divided by l1 allows to keep this difference in a ratio between 0 and 1
     # a difference close to zero (l3 close to l1) means that the subset of points are equally spread in the 3 principal directions
     # If the anisotropy is close to 1 (mean l3 close to zero), the subset of points is strongly related only in the first principal component. It depends mainly on one direction.
-    if out_map.count(b"anisotropy"):
-        out[out_map.at(b"anisotropy")] = (l1 - l3) / l1
-    if out_map.count(b"planarity"):
-        out[out_map.at(b"planarity")] = (l2 - l3) / l1
-    if out_map.count(b"linearity"):
-        out[out_map.at(b"linearity")] = (l1 - l2) / l1
-    if out_map.count(b"PCA1"):
-        out[out_map.at(b"PCA1")] = l1 / eigenvalue_sum
-    if out_map.count(b"PCA2"):
-        out[out_map.at(b"PCA2")] = l2 / eigenvalue_sum
+    if feature_indices[3] >= 0:  # anisotropy
+        out[feature_indices[3]] = (l1 - l3) * l1_inv
+    if feature_indices[4] >= 0:  # planarity
+        out[feature_indices[4]] = (l2 - l3) * l1_inv
+    if feature_indices[5] >= 0:  # linearity
+        out[feature_indices[5]] = (l1 - l2) * l1_inv
+    if feature_indices[6] >= 0:  # PCA1
+        out[feature_indices[6]] = l1 * eigenvalue_sum_inv
+    if feature_indices[7] >= 0:  # PCA2
+        out[feature_indices[7]] = l2 * eigenvalue_sum_inv
     # Surface variance is how the third component contributes to the sum of the eigenvalues
-    if out_map.count(b"surface_variation"):
-        out[out_map.at(b"surface_variation")] = l3 / eigenvalue_sum
-    if out_map.count(b"sphericity"):
-        out[out_map.at(b"sphericity")] = l3 / l1
+    if feature_indices[8] >= 0:  # surface_variation
+        out[feature_indices[8]] = l3 * eigenvalue_sum_inv
+    if feature_indices[9] >= 0:  # sphericity
+        out[feature_indices[9]] = l3 * l1_inv
 
-    if out_map.count(b"verticality"):
-        out[out_map.at(b"verticality")] = 1.0 - fabs(eigenvectors[2, 2])
+    if feature_indices[10] >= 0:  # verticality
+        out[feature_indices[10]] = 1.0 - fabs(eigenvectors[2, 2])
     
-    # eigenvectors is col-major
-    if out_map.count(b"nx") or out_map.count(b"ny") or out_map.count(b"nz"):
+    # eigenvectors is col-major - only compute normal if any component is requested
+    if feature_indices[11] >= 0 or feature_indices[12] >= 0 or feature_indices[13] >= 0:  # nx, ny, nz
         n0 = eigenvectors[0, 1] * eigenvectors[1, 2] - eigenvectors[0, 2] * eigenvectors[1, 1]
         n1 = eigenvectors[0, 2] * eigenvectors[1, 0] - eigenvectors[0, 0] * eigenvectors[1, 2]
         n2 = eigenvectors[0, 0] * eigenvectors[1, 1] - eigenvectors[0, 1] * eigenvectors[1, 0]
         norm = sqrt(n0 * n0 + n1 * n1 + n2 * n2)
-        if out_map.count(b"nx"):
-            out[out_map.at(b"nx")] = n0 / norm
-        if out_map.count(b"ny"):
-            out[out_map.at(b"ny")] = n1 / norm
-        if out_map.count(b"nz"):
-            out[out_map.at(b"nz")] = n2 / norm
+        if feature_indices[11] >= 0:  # nx
+            out[feature_indices[11]] = n0 / norm
+        if feature_indices[12] >= 0:  # ny
+            out[feature_indices[12]] = n1 / norm
+        if feature_indices[13] >= 0:  # nz
+            out[feature_indices[13]] = n2 / norm
 
-    if out_map.count(b"eigenvector1x"):
-        out[out_map.at(b"eigenvector1x")] = eigenvectors[0, 0]
-    if out_map.count(b"eigenvector1y"):
-        out[out_map.at(b"eigenvector1y")] = eigenvectors[0, 1]
-    if out_map.count(b"eigenvector1z"):
-        out[out_map.at(b"eigenvector1z")] = eigenvectors[0, 2]
+    if feature_indices[19] >= 0:  # eigenvector1x
+        out[feature_indices[19]] = eigenvectors[0, 0]
+    if feature_indices[20] >= 0:  # eigenvector1y
+        out[feature_indices[20]] = eigenvectors[0, 1]
+    if feature_indices[21] >= 0:  # eigenvector1z
+        out[feature_indices[21]] = eigenvectors[0, 2]
 
-    if out_map.count(b"eigenvector2x"):
-        out[out_map.at(b"eigenvector2x")] = eigenvectors[1, 0]
-    if out_map.count(b"eigenvector2y"):
-        out[out_map.at(b"eigenvector2y")] = eigenvectors[1, 1]
-    if out_map.count(b"eigenvector2z"):
-        out[out_map.at(b"eigenvector2z")] = eigenvectors[1, 2]
+    if feature_indices[22] >= 0:  # eigenvector2x
+        out[feature_indices[22]] = eigenvectors[1, 0]
+    if feature_indices[23] >= 0:  # eigenvector2y
+        out[feature_indices[23]] = eigenvectors[1, 1]
+    if feature_indices[24] >= 0:  # eigenvector2z
+        out[feature_indices[24]] = eigenvectors[1, 2]
 
-    if out_map.count(b"eigenvector3x"):
-        out[out_map.at(b"eigenvector3x")] = eigenvectors[2, 0]
-    if out_map.count(b"eigenvector3y"):
-        out[out_map.at(b"eigenvector3y")] = eigenvectors[2, 1]
-    if out_map.count(b"eigenvector3z"):
-        out[out_map.at(b"eigenvector3z")] = eigenvectors[2, 2]
+    if feature_indices[25] >= 0:  # eigenvector3x
+        out[feature_indices[25]] = eigenvectors[2, 0]
+    if feature_indices[26] >= 0:  # eigenvector3y
+        out[feature_indices[26]] = eigenvectors[2, 1]
+    if feature_indices[27] >= 0:  # eigenvector3z
+        out[feature_indices[27]] = eigenvectors[2, 2]
 
 
 cdef vector[np.intp_t] *** init_result_vectors(int num_threads):
