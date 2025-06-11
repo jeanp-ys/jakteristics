@@ -187,12 +187,12 @@ class PerformanceBenchmark:
         print(f"\n=== Running {version_name} Benchmarks ===")
         
         scenarios = {
-            'small': {'n_points': 1000, 'search_radius': 0.15},
-            'medium': {'n_points': 10000, 'search_radius': 0.15}, 
-            'large': {'n_points': 50000, 'search_radius': 0.15},
-            'very_large': {'n_points': 10000000, 'search_radius': 0.15},
-            'small_large_radius': {'n_points': 1000, 'search_radius': 0.3},
-            'medium_large_radius': {'n_points': 10000, 'search_radius': 0.3},
+            'small': {'n_points': 1_000, 'search_radius': 0.15},
+            'medium': {'n_points': 10_000, 'search_radius': 0.15}, 
+            'large': {'n_points': 50_000, 'search_radius': 0.15},
+            'very_large': {'n_points': 1_000_000, 'search_radius': 0.15},
+            'small_large_radius': {'n_points': 1_000, 'search_radius': 0.3},
+            'medium_large_radius': {'n_points': 10_000, 'search_radius': 0.3},
         }
         
         thread_counts = [1, 2, 4, min(8, self.cpu_count)]
