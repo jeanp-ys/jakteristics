@@ -2,46 +2,46 @@
   "small": {
     "1_threads": {
       "features_basic": {
-        "wall_time": 0.014314478990854695,
-        "cpu_time": 0.014287577999999357,
-        "cpu_efficiency": 0.9981207146363814,
-        "throughput_points_per_sec": 69859.33617555238,
+        "wall_time": 0.0012204079976072535,
+        "cpu_time": 0.0012191140000004097,
+        "cpu_efficiency": 0.998939700813678,
+        "throughput_points_per_sec": 819398.1045360338,
         "features_shape": [
           1000,
           4
         ],
-        "memory_usage_mb": 64.70703125,
-        "cpu_utilization_change": -63.199999999999996
+        "memory_usage_mb": 62.94921875,
+        "cpu_utilization_change": -63.699999999999996
       },
       "features_geometric": {
-        "wall_time": 0.013584346990683116,
-        "cpu_time": 0.013581675000000182,
-        "cpu_efficiency": 0.999803303707954,
-        "throughput_points_per_sec": 73614.13844079913,
+        "wall_time": 0.0031011669925646856,
+        "cpu_time": 0.0030983319999995373,
+        "cpu_efficiency": 0.9990858304077318,
+        "throughput_points_per_sec": 322459.2556278285,
         "features_shape": [
           1000,
           5
         ],
-        "memory_usage_mb": 65.70703125,
-        "cpu_utilization_change": 0.0
+        "memory_usage_mb": 63.94921875,
+        "cpu_utilization_change": -0.3
       },
       "features_all": {
-        "wall_time": 0.017437608999898657,
-        "cpu_time": 0.017434689999999975,
-        "cpu_efficiency": 0.9998326032027269,
-        "throughput_points_per_sec": 57347.31177914425,
+        "wall_time": 0.002957752993097529,
+        "cpu_time": 0.002955803999999951,
+        "cpu_efficiency": 0.9993410561659049,
+        "throughput_points_per_sec": 338094.4934663873,
         "features_shape": [
           1000,
           27
         ],
-        "memory_usage_mb": 65.95703125,
-        "cpu_utilization_change": -1.2000000000000002
+        "memory_usage_mb": 64.19921875,
+        "cpu_utilization_change": -2.4000000000000004
       },
       "scalars_stats": {
-        "wall_time": 0.004178212009719573,
-        "cpu_time": 0.004174147999999711,
-        "cpu_efficiency": 0.9990273328135557,
-        "throughput_points_per_sec": 239336.82581777763,
+        "wall_time": 0.00488539099751506,
+        "cpu_time": 0.0048821900000000085,
+        "cpu_efficiency": 0.9993447817141596,
+        "throughput_points_per_sec": 204691.9070569064,
         "stats_shape": [
           [
             1000,
@@ -56,52 +56,52 @@
             4
           ]
         ],
-        "memory_usage_mb": 65.95703125,
-        "cpu_utilization_change": 0.5999999999999996
+        "memory_usage_mb": 64.19921875,
+        "cpu_utilization_change": 0.9999999999999999
       }
     },
     "2_threads": {
       "features_basic": {
-        "wall_time": 0.016133625991642475,
-        "cpu_time": 0.029089446000000407,
-        "cpu_efficiency": 0.901516063873964,
-        "throughput_points_per_sec": 61982.346715984306,
+        "wall_time": 0.0044192960049258545,
+        "cpu_time": 0.006581638000000112,
+        "cpu_efficiency": 0.7446477892252588,
+        "throughput_points_per_sec": 226280.3846778708,
         "features_shape": [
           1000,
           4
         ],
-        "memory_usage_mb": 65.95703125,
-        "cpu_utilization_change": -1.3
+        "memory_usage_mb": 64.19921875,
+        "cpu_utilization_change": 0.40000000000000013
       },
       "features_geometric": {
-        "wall_time": 0.014632441991125233,
-        "cpu_time": 0.027141020000000182,
-        "cpu_efficiency": 0.9274261950418653,
-        "throughput_points_per_sec": 68341.29262952233,
+        "wall_time": 0.004271097990567796,
+        "cpu_time": 0.006328493999999907,
+        "cpu_efficiency": 0.740850949097354,
+        "throughput_points_per_sec": 234131.83265951267,
         "features_shape": [
           1000,
           5
         ],
-        "memory_usage_mb": 65.95703125,
-        "cpu_utilization_change": -0.6
+        "memory_usage_mb": 64.19921875,
+        "cpu_utilization_change": -0.5999999999999996
       },
       "features_all": {
-        "wall_time": 0.019437846000073478,
-        "cpu_time": 0.03549418400000004,
-        "cpu_efficiency": 0.9130174197250526,
-        "throughput_points_per_sec": 51446.02956501558,
+        "wall_time": 0.004326923008193262,
+        "cpu_time": 0.006070042000000164,
+        "cpu_efficiency": 0.7014270866971994,
+        "throughput_points_per_sec": 231111.1147821318,
         "features_shape": [
           1000,
           27
         ],
-        "memory_usage_mb": 66.95703125,
-        "cpu_utilization_change": 0.8999999999999999
+        "memory_usage_mb": 65.19921875,
+        "cpu_utilization_change": -1.5
       },
       "scalars_stats": {
-        "wall_time": 0.004942997999023646,
-        "cpu_time": 0.007585689999999978,
-        "cpu_efficiency": 0.7673167176578185,
-        "throughput_points_per_sec": 202306.3736213372,
+        "wall_time": 0.0017450609884690493,
+        "cpu_time": 0.0029974670000001424,
+        "cpu_efficiency": 0.8588430489841604,
+        "throughput_points_per_sec": 573045.8743893559,
         "stats_shape": [
           [
             1000,
@@ -116,52 +116,52 @@
             4
           ]
         ],
-        "memory_usage_mb": 66.95703125,
-        "cpu_utilization_change": 0.0
+        "memory_usage_mb": 65.19921875,
+        "cpu_utilization_change": -1.5
       }
     },
     "4_threads": {
       "features_basic": {
-        "wall_time": 0.01723489300638903,
-        "cpu_time": 0.0586782880000003,
-        "cpu_efficiency": 0.8511553854475348,
-        "throughput_points_per_sec": 58021.828138375844,
+        "wall_time": 0.0062842740007909015,
+        "cpu_time": 0.012319559999999896,
+        "cpu_efficiency": 0.49009479847828996,
+        "throughput_points_per_sec": 159127.3709380186,
         "features_shape": [
           1000,
           4
         ],
-        "memory_usage_mb": 67.328125,
-        "cpu_utilization_change": -1.1999999999999997
+        "memory_usage_mb": 65.32421875,
+        "cpu_utilization_change": -2.5
       },
       "features_geometric": {
-        "wall_time": 0.007422531009069644,
-        "cpu_time": 0.02294285099999982,
-        "cpu_efficiency": 0.7727435214472592,
-        "throughput_points_per_sec": 134724.93395825397,
+        "wall_time": 0.009985077995224856,
+        "cpu_time": 0.021026973999999754,
+        "cpu_efficiency": 0.5264599337645495,
+        "throughput_points_per_sec": 100149.44304673714,
         "features_shape": [
           1000,
           5
         ],
-        "memory_usage_mb": 67.328125,
-        "cpu_utilization_change": 4.7
+        "memory_usage_mb": 65.32421875,
+        "cpu_utilization_change": -0.30000000000000004
       },
       "features_all": {
-        "wall_time": 0.016951384997810237,
-        "cpu_time": 0.051457287999999934,
-        "cpu_efficiency": 0.7588950402378203,
-        "throughput_points_per_sec": 58992.229846067385,
+        "wall_time": 0.011949972991715185,
+        "cpu_time": 0.022936031000000412,
+        "cpu_efficiency": 0.4798343689961008,
+        "throughput_points_per_sec": 83682.19749896435,
         "features_shape": [
           1000,
           27
         ],
-        "memory_usage_mb": 69.578125,
-        "cpu_utilization_change": 1.5
+        "memory_usage_mb": 67.57421875,
+        "cpu_utilization_change": -0.6
       },
       "scalars_stats": {
-        "wall_time": 0.014505037004710175,
-        "cpu_time": 0.03135088099999983,
-        "cpu_efficiency": 0.5403447262805906,
-        "throughput_points_per_sec": 68941.56834451875,
+        "wall_time": 0.015494912004214711,
+        "cpu_time": 0.035454352000000355,
+        "cpu_efficiency": 0.5720321611112821,
+        "throughput_points_per_sec": 64537.31390846194,
         "stats_shape": [
           [
             1000,
@@ -176,52 +176,52 @@
             4
           ]
         ],
-        "memory_usage_mb": 69.578125,
-        "cpu_utilization_change": -1.3000000000000003
+        "memory_usage_mb": 67.57421875,
+        "cpu_utilization_change": -0.30000000000000004
       }
     },
     "8_threads": {
       "features_basic": {
-        "wall_time": 0.0365170750010293,
-        "cpu_time": 0.12718807200000004,
-        "cpu_efficiency": 0.4353719184669604,
-        "throughput_points_per_sec": 27384.4496025986,
+        "wall_time": 0.014513686008285731,
+        "cpu_time": 0.04044462500000012,
+        "cpu_efficiency": 0.3483317829884036,
+        "throughput_points_per_sec": 68900.48464801493,
         "features_shape": [
           1000,
           4
         ],
-        "memory_usage_mb": 69.70703125,
-        "cpu_utilization_change": -0.39999999999999947
+        "memory_usage_mb": 67.8984375,
+        "cpu_utilization_change": -2.2
       },
       "features_geometric": {
-        "wall_time": 0.04636355700495187,
-        "cpu_time": 0.15462617399999967,
-        "cpu_efficiency": 0.41688500621157254,
-        "throughput_points_per_sec": 21568.66436915517,
+        "wall_time": 0.01789959800953511,
+        "cpu_time": 0.04190686400000043,
+        "cpu_efficiency": 0.2926522705822545,
+        "throughput_points_per_sec": 55867.176428615894,
         "features_shape": [
           1000,
           5
         ],
-        "memory_usage_mb": 71.7265625,
-        "cpu_utilization_change": -1.9000000000000004
+        "memory_usage_mb": 69.90625,
+        "cpu_utilization_change": -1.3
       },
       "features_all": {
-        "wall_time": 0.043987019002088346,
-        "cpu_time": 0.13685998099999974,
-        "cpu_efficiency": 0.38892150486914706,
-        "throughput_points_per_sec": 22733.979766906315,
+        "wall_time": 0.007661319003091194,
+        "cpu_time": 0.015675198999999473,
+        "cpu_efficiency": 0.25575228941770395,
+        "throughput_points_per_sec": 130525.82715802845,
         "features_shape": [
           1000,
           27
         ],
-        "memory_usage_mb": 74.2265625,
-        "cpu_utilization_change": -3.4999999999999996
+        "memory_usage_mb": 72.40625,
+        "cpu_utilization_change": -1.0000000000000002
       },
       "scalars_stats": {
-        "wall_time": 0.024593569003627636,
-        "cpu_time": 0.06648802100000051,
-        "cpu_efficiency": 0.3379339787476215,
-        "throughput_points_per_sec": 40661.03621855358,
+        "wall_time": 0.02454860600118991,
+        "cpu_time": 0.06322357999999983,
+        "cpu_efficiency": 0.3219306016649952,
+        "throughput_points_per_sec": 40735.51060094933,
         "stats_shape": [
           [
             1000,
@@ -236,52 +236,52 @@
             4
           ]
         ],
-        "memory_usage_mb": 74.2265625,
-        "cpu_utilization_change": 3.1999999999999997
+        "memory_usage_mb": 72.40625,
+        "cpu_utilization_change": -0.6000000000000001
       }
     },
     "32_threads": {
       "features_basic": {
-        "wall_time": 0.048142875006305985,
-        "cpu_time": 0.2297263909999998,
-        "cpu_efficiency": 0.14911759461414925,
-        "throughput_points_per_sec": 20771.505645830566,
+        "wall_time": 0.021107396998559125,
+        "cpu_time": 0.14537001199999988,
+        "cpu_efficiency": 0.21522373769300435,
+        "throughput_points_per_sec": 47376.75612337533,
         "features_shape": [
           1000,
           4
         ],
-        "memory_usage_mb": 74.87109375,
-        "cpu_utilization_change": 2.1999999999999997
+        "memory_usage_mb": 73.7265625,
+        "cpu_utilization_change": -0.6000000000000001
       },
       "features_geometric": {
-        "wall_time": 0.05088532000081614,
-        "cpu_time": 0.2610355689999988,
-        "cpu_efficiency": 0.16030873994934353,
-        "throughput_points_per_sec": 19652.033238347743,
+        "wall_time": 0.028815547993872315,
+        "cpu_time": 0.1844339340000003,
+        "cpu_efficiency": 0.20001564567592614,
+        "throughput_points_per_sec": 34703.48716646485,
         "features_shape": [
           1000,
           5
         ],
-        "memory_usage_mb": 75.328125,
-        "cpu_utilization_change": -0.3000000000000007
+        "memory_usage_mb": 73.828125,
+        "cpu_utilization_change": -0.6000000000000001
       },
       "features_all": {
-        "wall_time": 0.046409524002228864,
-        "cpu_time": 0.25174998900000034,
-        "cpu_efficiency": 0.16951665257054094,
-        "throughput_points_per_sec": 21547.301367537708,
+        "wall_time": 0.022031340005923994,
+        "cpu_time": 0.1618261479999994,
+        "cpu_efficiency": 0.22953969770518676,
+        "throughput_points_per_sec": 45389.88548726998,
         "features_shape": [
           1000,
           27
         ],
-        "memory_usage_mb": 75.55078125,
-        "cpu_utilization_change": 0.2999999999999998
+        "memory_usage_mb": 74.05078125,
+        "cpu_utilization_change": -0.3
       },
       "scalars_stats": {
-        "wall_time": 0.027152033988386393,
-        "cpu_time": 0.08882089300000118,
-        "cpu_efficiency": 0.10222633440416483,
-        "throughput_points_per_sec": 36829.653366953105,
+        "wall_time": 0.030674749010358937,
+        "cpu_time": 0.08335734600000144,
+        "cpu_efficiency": 0.08492056647701855,
+        "throughput_points_per_sec": 32600.10374208107,
         "stats_shape": [
           [
             1000,
@@ -296,54 +296,54 @@
             4
           ]
         ],
-        "memory_usage_mb": 75.55078125,
-        "cpu_utilization_change": -3.1
+        "memory_usage_mb": 74.05078125,
+        "cpu_utilization_change": -0.6
       }
     }
   },
   "medium": {
     "1_threads": {
       "features_basic": {
-        "wall_time": 0.10113090599770658,
-        "cpu_time": 0.10109273800000018,
-        "cpu_efficiency": 0.9996225881956673,
-        "throughput_points_per_sec": 98881.74046642851,
+        "wall_time": 0.014420287989196368,
+        "cpu_time": 0.014417562999998523,
+        "cpu_efficiency": 0.9998110308753968,
+        "throughput_points_per_sec": 693467.4264128405,
         "features_shape": [
           10000,
           4
         ],
-        "memory_usage_mb": 75.55078125,
-        "cpu_utilization_change": -0.30000000000000004
+        "memory_usage_mb": 74.05078125,
+        "cpu_utilization_change": 0.0
       },
       "features_geometric": {
-        "wall_time": 0.09713562599790748,
-        "cpu_time": 0.09711534300000046,
-        "cpu_efficiency": 0.999791188889775,
-        "throughput_points_per_sec": 102948.8398027663,
+        "wall_time": 0.019137623996357433,
+        "cpu_time": 0.019133726999999823,
+        "cpu_efficiency": 0.99979636989637,
+        "throughput_points_per_sec": 522530.9057123995,
         "features_shape": [
           10000,
           5
         ],
-        "memory_usage_mb": 75.55078125,
-        "cpu_utilization_change": 1.1999999999999997
+        "memory_usage_mb": 74.05078125,
+        "cpu_utilization_change": -1.9
       },
       "features_all": {
-        "wall_time": 0.10634414799278602,
-        "cpu_time": 0.10634109500000122,
-        "cpu_efficiency": 0.9999712913889253,
-        "throughput_points_per_sec": 94034.32336190574,
+        "wall_time": 0.014689440009533428,
+        "cpu_time": 0.014673342000000034,
+        "cpu_efficiency": 0.9989041100598153,
+        "throughput_points_per_sec": 680761.1449796597,
         "features_shape": [
           10000,
           27
         ],
-        "memory_usage_mb": 75.55078125,
-        "cpu_utilization_change": -0.30000000000000027
+        "memory_usage_mb": 74.05078125,
+        "cpu_utilization_change": -0.6000000000000001
       },
       "scalars_stats": {
-        "wall_time": 0.03050266699574422,
-        "cpu_time": 0.030499810000000238,
-        "cpu_efficiency": 0.9999063361985894,
-        "throughput_points_per_sec": 327840.18529904995,
+        "wall_time": 0.030562640007701702,
+        "cpu_time": 0.030560091999999983,
+        "cpu_efficiency": 0.9999166299867722,
+        "throughput_points_per_sec": 327196.86510982126,
         "stats_shape": [
           [
             10000,
@@ -358,52 +358,52 @@
             4
           ]
         ],
-        "memory_usage_mb": 75.55078125,
-        "cpu_utilization_change": -0.3999999999999999
+        "memory_usage_mb": 74.05078125,
+        "cpu_utilization_change": -0.9
       }
     },
     "2_threads": {
       "features_basic": {
-        "wall_time": 0.10085716500179842,
-        "cpu_time": 0.1892095539999996,
-        "cpu_efficiency": 0.9380074980127874,
-        "throughput_points_per_sec": 99150.1198732057,
+        "wall_time": 0.020246529005817138,
+        "cpu_time": 0.031209839000000628,
+        "cpu_efficiency": 0.7707454198947771,
+        "throughput_points_per_sec": 493911.82049658225,
         "features_shape": [
           10000,
           4
         ],
-        "memory_usage_mb": 75.55078125,
-        "cpu_utilization_change": -2.5
+        "memory_usage_mb": 74.05078125,
+        "cpu_utilization_change": -1.5999999999999999
       },
       "features_geometric": {
-        "wall_time": 0.10137337299238425,
-        "cpu_time": 0.19070233600000108,
-        "cpu_efficiency": 0.940593818528302,
-        "throughput_points_per_sec": 98645.23301154493,
+        "wall_time": 0.014576435991330072,
+        "cpu_time": 0.021824784999999736,
+        "cpu_efficiency": 0.7486324164899059,
+        "throughput_points_per_sec": 686038.7550117126,
         "features_shape": [
           10000,
           5
         ],
-        "memory_usage_mb": 75.55078125,
-        "cpu_utilization_change": -0.7000000000000001
+        "memory_usage_mb": 74.05078125,
+        "cpu_utilization_change": -0.6000000000000001
       },
       "features_all": {
-        "wall_time": 0.09795977600151673,
-        "cpu_time": 0.18452007900000034,
-        "cpu_efficiency": 0.9418155417032772,
-        "throughput_points_per_sec": 102082.71607159624,
+        "wall_time": 0.01721395600179676,
+        "cpu_time": 0.02787245899999924,
+        "cpu_efficiency": 0.8095890043256171,
+        "throughput_points_per_sec": 580923.9897532107,
         "features_shape": [
           10000,
           27
         ],
-        "memory_usage_mb": 75.55078125,
-        "cpu_utilization_change": 3.2
+        "memory_usage_mb": 74.05078125,
+        "cpu_utilization_change": -1.2
       },
       "scalars_stats": {
-        "wall_time": 0.02562988099816721,
-        "cpu_time": 0.04333071999999838,
-        "cpu_efficiency": 0.8453164492472078,
-        "throughput_points_per_sec": 390169.5837259291,
+        "wall_time": 0.02452431399433408,
+        "cpu_time": 0.04038305699999967,
+        "cpu_efficiency": 0.8233269442180825,
+        "throughput_points_per_sec": 407758.6024347237,
         "stats_shape": [
           [
             10000,
@@ -418,52 +418,52 @@
             4
           ]
         ],
-        "memory_usage_mb": 75.55078125,
-        "cpu_utilization_change": 2.2
+        "memory_usage_mb": 74.05078125,
+        "cpu_utilization_change": 1.6
       }
     },
     "4_threads": {
       "features_basic": {
-        "wall_time": 0.07722567400196567,
-        "cpu_time": 0.2554210999999995,
-        "cpu_efficiency": 0.8268658813955386,
-        "throughput_points_per_sec": 129490.61473708166,
+        "wall_time": 0.04870167600165587,
+        "cpu_time": 0.10859785000000066,
+        "cpu_efficiency": 0.5574646445242886,
+        "throughput_points_per_sec": 205331.74258027584,
         "features_shape": [
           10000,
           4
         ],
-        "memory_usage_mb": 75.55078125,
-        "cpu_utilization_change": 0.2999999999999998
+        "memory_usage_mb": 74.05078125,
+        "cpu_utilization_change": -1.3
       },
       "features_geometric": {
-        "wall_time": 0.07137082600092981,
-        "cpu_time": 0.237942992999999,
-        "cpu_efficiency": 0.8334742861071102,
-        "throughput_points_per_sec": 140113.27261183332,
+        "wall_time": 0.04084888599754777,
+        "cpu_time": 0.08710922099999863,
+        "cpu_efficiency": 0.5331187061333077,
+        "throughput_points_per_sec": 244804.7175778629,
         "features_shape": [
           10000,
           5
         ],
-        "memory_usage_mb": 75.55078125,
-        "cpu_utilization_change": -3.1
+        "memory_usage_mb": 74.05078125,
+        "cpu_utilization_change": -0.3
       },
       "features_all": {
-        "wall_time": 0.06995198100048583,
-        "cpu_time": 0.23606545400000023,
-        "cpu_efficiency": 0.8436696524661708,
-        "throughput_points_per_sec": 142955.20808668088,
+        "wall_time": 0.04795823400490917,
+        "cpu_time": 0.10775108400000022,
+        "cpu_efficiency": 0.5616923049594071,
+        "throughput_points_per_sec": 208514.76722383825,
         "features_shape": [
           10000,
           27
         ],
-        "memory_usage_mb": 75.55078125,
-        "cpu_utilization_change": -1.0000000000000002
+        "memory_usage_mb": 74.05078125,
+        "cpu_utilization_change": -0.3
       },
       "scalars_stats": {
-        "wall_time": 0.06791846299893223,
-        "cpu_time": 0.15045077299999932,
-        "cpu_efficiency": 0.5537918791034944,
-        "throughput_points_per_sec": 147235.36956596342,
+        "wall_time": 0.05507587699685246,
+        "cpu_time": 0.1309636679999997,
+        "cpu_efficiency": 0.5944692810224528,
+        "throughput_points_per_sec": 181567.69433869372,
         "stats_shape": [
           [
             10000,
@@ -478,52 +478,52 @@
             4
           ]
         ],
-        "memory_usage_mb": 75.55078125,
-        "cpu_utilization_change": 1.2000000000000002
+        "memory_usage_mb": 74.05078125,
+        "cpu_utilization_change": -0.6
       }
     },
     "8_threads": {
       "features_basic": {
-        "wall_time": 0.1667588580021402,
-        "cpu_time": 0.592079953999999,
-        "cpu_efficiency": 0.4438144704076232,
-        "throughput_points_per_sec": 59966.8294674437,
+        "wall_time": 0.0643081979942508,
+        "cpu_time": 0.1724219980000008,
+        "cpu_efficiency": 0.33514777932242684,
+        "throughput_points_per_sec": 155501.16955374813,
         "features_shape": [
           10000,
           4
         ],
-        "memory_usage_mb": 75.55078125,
-        "cpu_utilization_change": 0.0
+        "memory_usage_mb": 74.05078125,
+        "cpu_utilization_change": -1.2
       },
       "features_geometric": {
-        "wall_time": 0.16636739499517716,
-        "cpu_time": 0.5859322460000005,
-        "cpu_efficiency": 0.440239692111085,
-        "throughput_points_per_sec": 60107.93160697077,
+        "wall_time": 0.068741940005566,
+        "cpu_time": 0.18623220299999943,
+        "cpu_efficiency": 0.33864370678387956,
+        "throughput_points_per_sec": 145471.60000416494,
         "features_shape": [
           10000,
           5
         ],
-        "memory_usage_mb": 76.55078125,
-        "cpu_utilization_change": -0.2999999999999998
+        "memory_usage_mb": 75.05078125,
+        "cpu_utilization_change": 1.9
       },
       "features_all": {
-        "wall_time": 0.1729148640006315,
-        "cpu_time": 0.6115615489999993,
-        "cpu_efficiency": 0.44209729491341315,
-        "throughput_points_per_sec": 57831.92820232898,
+        "wall_time": 0.07057958000223152,
+        "cpu_time": 0.19416167400000006,
+        "cpu_efficiency": 0.34387012857306115,
+        "throughput_points_per_sec": 141684.0394868293,
         "features_shape": [
           10000,
           27
         ],
-        "memory_usage_mb": 76.55078125,
-        "cpu_utilization_change": 3.1000000000000005
+        "memory_usage_mb": 75.05078125,
+        "cpu_utilization_change": -0.3
       },
       "scalars_stats": {
-        "wall_time": 0.11219099299341906,
-        "cpu_time": 0.3107263620000005,
-        "cpu_efficiency": 0.3462024375903188,
-        "throughput_points_per_sec": 89133.71504418884,
+        "wall_time": 0.09642489399993792,
+        "cpu_time": 0.2754362060000002,
+        "cpu_efficiency": 0.35706055067088993,
+        "throughput_points_per_sec": 103707.65872977198,
         "stats_shape": [
           [
             10000,
@@ -538,52 +538,52 @@
             4
           ]
         ],
-        "memory_usage_mb": 76.55078125,
-        "cpu_utilization_change": -1.5999999999999996
+        "memory_usage_mb": 75.05078125,
+        "cpu_utilization_change": -0.6
       }
     },
     "32_threads": {
       "features_basic": {
-        "wall_time": 0.3891543710051337,
-        "cpu_time": 1.5775129679999988,
-        "cpu_efficiency": 0.12667795590390435,
-        "throughput_points_per_sec": 25696.743362206973,
+        "wall_time": 0.1316525940055726,
+        "cpu_time": 0.4655538210000003,
+        "cpu_efficiency": 0.11050718002285771,
+        "throughput_points_per_sec": 75957.48549836184,
         "features_shape": [
           10000,
           4
         ],
-        "memory_usage_mb": 76.98046875,
-        "cpu_utilization_change": -1.0000000000000004
+        "memory_usage_mb": 75.171875,
+        "cpu_utilization_change": -0.6000000000000001
       },
       "features_geometric": {
-        "wall_time": 0.2725040050136158,
-        "cpu_time": 1.1543249430000007,
-        "cpu_efficiency": 0.132374768095418,
-        "throughput_points_per_sec": 36696.70836397558,
+        "wall_time": 0.13343338700360619,
+        "cpu_time": 0.4855243419999997,
+        "cpu_efficiency": 0.11370943980527103,
+        "throughput_points_per_sec": 74943.76201160013,
         "features_shape": [
           10000,
           5
         ],
-        "memory_usage_mb": 77.12109375,
-        "cpu_utilization_change": -1.2999999999999998
+        "memory_usage_mb": 75.171875,
+        "cpu_utilization_change": -0.6
       },
       "features_all": {
-        "wall_time": 0.40052632299193647,
-        "cpu_time": 1.6333707319999995,
-        "cpu_efficiency": 0.1274394027181769,
-        "throughput_points_per_sec": 24967.148039858854,
+        "wall_time": 0.09101053900667466,
+        "cpu_time": 0.340250309,
+        "cpu_efficiency": 0.11683066897856954,
+        "throughput_points_per_sec": 109877.38463197768,
         "features_shape": [
           10000,
           27
         ],
-        "memory_usage_mb": 77.125,
-        "cpu_utilization_change": 2.8000000000000003
+        "memory_usage_mb": 75.59765625,
+        "cpu_utilization_change": 1.6
       },
       "scalars_stats": {
-        "wall_time": 0.22834633699676488,
-        "cpu_time": 0.7487441009999998,
-        "cpu_efficiency": 0.10246826581055027,
-        "throughput_points_per_sec": 43793.126404045084,
+        "wall_time": 0.20998092100489885,
+        "cpu_time": 0.6845740419999995,
+        "cpu_efficiency": 0.10188039327630574,
+        "throughput_points_per_sec": 47623.37431488216,
         "stats_shape": [
           [
             10000,
@@ -598,54 +598,54 @@
             4
           ]
         ],
-        "memory_usage_mb": 77.125,
-        "cpu_utilization_change": -1.3000000000000003
+        "memory_usage_mb": 75.59765625,
+        "cpu_utilization_change": -0.6
       }
     }
   },
   "large": {
     "1_threads": {
       "features_basic": {
-        "wall_time": 0.4958249859919306,
-        "cpu_time": 0.4956748279999985,
-        "cpu_efficiency": 0.9996971552540224,
-        "throughput_points_per_sec": 100842.03380749702,
+        "wall_time": 0.0620778869924834,
+        "cpu_time": 0.06193238100000009,
+        "cpu_efficiency": 0.997656073691733,
+        "throughput_points_per_sec": 805439.7857654879,
         "features_shape": [
           50000,
           4
         ],
-        "memory_usage_mb": 77.7109375,
-        "cpu_utilization_change": -2.8
+        "memory_usage_mb": 76.18359375,
+        "cpu_utilization_change": -1.6
       },
       "features_geometric": {
-        "wall_time": 0.5140220579924062,
-        "cpu_time": 0.5138418529999988,
-        "cpu_efficiency": 0.99964942167441,
-        "throughput_points_per_sec": 97272.09021979105,
+        "wall_time": 0.06679853300738614,
+        "cpu_time": 0.06677503400000084,
+        "cpu_efficiency": 0.9996482107266832,
+        "throughput_points_per_sec": 748519.4322227306,
         "features_shape": [
           50000,
           5
         ],
-        "memory_usage_mb": 77.7109375,
-        "cpu_utilization_change": 2.8
+        "memory_usage_mb": 76.18359375,
+        "cpu_utilization_change": 1.0
       },
       "features_all": {
-        "wall_time": 0.4915267759934068,
-        "cpu_time": 0.49147715100000156,
-        "cpu_efficiency": 0.9998990390842799,
-        "throughput_points_per_sec": 101723.85807252684,
+        "wall_time": 0.062996844004374,
+        "cpu_time": 0.06299399200000089,
+        "cpu_efficiency": 0.9999547278213983,
+        "throughput_points_per_sec": 793690.553712951,
         "features_shape": [
           50000,
           27
         ],
-        "memory_usage_mb": 77.7109375,
-        "cpu_utilization_change": -2.9
+        "memory_usage_mb": 76.18359375,
+        "cpu_utilization_change": -0.6000000000000001
       },
       "scalars_stats": {
-        "wall_time": 0.13121392400353216,
-        "cpu_time": 0.1311883629999997,
-        "cpu_efficiency": 0.9998051959521326,
-        "throughput_points_per_sec": 381057.12011671904,
+        "wall_time": 0.13335490399913397,
+        "cpu_time": 0.13328941500000013,
+        "cpu_efficiency": 0.999508911954717,
+        "throughput_points_per_sec": 374939.3423156355,
         "stats_shape": [
           [
             50000,
@@ -660,52 +660,52 @@
             4
           ]
         ],
-        "memory_usage_mb": 77.7109375,
-        "cpu_utilization_change": -0.20000000000000018
+        "memory_usage_mb": 76.18359375,
+        "cpu_utilization_change": -0.30000000000000004
       }
     },
     "2_threads": {
       "features_basic": {
-        "wall_time": 0.46388991799904034,
-        "cpu_time": 0.8850149219999999,
-        "cpu_efficiency": 0.9539061829770471,
-        "throughput_points_per_sec": 107784.19202484896,
+        "wall_time": 0.07007434900151566,
+        "cpu_time": 0.11322550800000108,
+        "cpu_efficiency": 0.807895539618585,
+        "throughput_points_per_sec": 713527.8559479524,
         "features_shape": [
           50000,
           4
         ],
-        "memory_usage_mb": 77.7109375,
-        "cpu_utilization_change": -0.6000000000000005
+        "memory_usage_mb": 76.18359375,
+        "cpu_utilization_change": -0.6000000000000001
       },
       "features_geometric": {
-        "wall_time": 0.45798468400607817,
-        "cpu_time": 0.8818351239999984,
-        "cpu_efficiency": 0.9627342952677158,
-        "throughput_points_per_sec": 109173.95656693276,
+        "wall_time": 0.06458301999373361,
+        "cpu_time": 0.10293451999999981,
+        "cpu_efficiency": 0.7969162793098509,
+        "throughput_points_per_sec": 774197.304567848,
         "features_shape": [
           50000,
           5
         ],
-        "memory_usage_mb": 77.7109375,
-        "cpu_utilization_change": -5.3
+        "memory_usage_mb": 76.18359375,
+        "cpu_utilization_change": -1.0
       },
       "features_all": {
-        "wall_time": 0.4611525799991796,
-        "cpu_time": 0.8875981169999996,
-        "cpu_efficiency": 0.9623692412190111,
-        "throughput_points_per_sec": 108423.98409673639,
+        "wall_time": 0.059534414001973346,
+        "cpu_time": 0.09760194099999886,
+        "cpu_efficiency": 0.8197102687259483,
+        "throughput_points_per_sec": 839850.3762604044,
         "features_shape": [
           50000,
           27
         ],
-        "memory_usage_mb": 78.2109375,
-        "cpu_utilization_change": 0.9999999999999999
+        "memory_usage_mb": 76.93359375,
+        "cpu_utilization_change": -0.9
       },
       "scalars_stats": {
-        "wall_time": 0.09286683800746687,
-        "cpu_time": 0.1636453600000003,
-        "cpu_efficiency": 0.8810753306085567,
-        "throughput_points_per_sec": 538405.3239325301,
+        "wall_time": 0.1000100319943158,
+        "cpu_time": 0.16993026799999988,
+        "cpu_efficiency": 0.8495661115759772,
+        "throughput_points_per_sec": 499949.8450599618,
         "stats_shape": [
           [
             50000,
@@ -720,52 +720,52 @@
             4
           ]
         ],
-        "memory_usage_mb": 78.2109375,
-        "cpu_utilization_change": -1.6000000000000005
+        "memory_usage_mb": 76.93359375,
+        "cpu_utilization_change": -0.6000000000000001
       }
     },
     "4_threads": {
       "features_basic": {
-        "wall_time": 0.32724109099945053,
-        "cpu_time": 1.1110965199999967,
-        "cpu_efficiency": 0.8488363400562846,
-        "throughput_points_per_sec": 152792.54768186784,
+        "wall_time": 0.17050698099774309,
+        "cpu_time": 0.3912148490000007,
+        "cpu_efficiency": 0.5736053250001227,
+        "throughput_points_per_sec": 293243.1253396119,
         "features_shape": [
           50000,
           4
         ],
-        "memory_usage_mb": 78.2109375,
-        "cpu_utilization_change": 6.299999999999999
+        "memory_usage_mb": 76.93359375,
+        "cpu_utilization_change": -8.700000000000001
       },
       "features_geometric": {
-        "wall_time": 0.3173940910055535,
-        "cpu_time": 1.0900343429999992,
-        "cpu_efficiency": 0.8585811565888026,
-        "throughput_points_per_sec": 157532.86345562476,
+        "wall_time": 0.16631814299034886,
+        "cpu_time": 0.38736851500000036,
+        "cpu_efficiency": 0.5822703825860999,
+        "throughput_points_per_sec": 300628.6572289435,
         "features_shape": [
           50000,
           5
         ],
-        "memory_usage_mb": 78.2109375,
-        "cpu_utilization_change": -5.0
+        "memory_usage_mb": 76.93359375,
+        "cpu_utilization_change": -0.3
       },
       "features_all": {
-        "wall_time": 0.31765615098993294,
-        "cpu_time": 1.0616021469999986,
-        "cpu_efficiency": 0.8354962934698866,
-        "throughput_points_per_sec": 157402.901987516,
+        "wall_time": 0.16808139500790276,
+        "cpu_time": 0.3892574230000001,
+        "cpu_efficiency": 0.5789716092338748,
+        "throughput_points_per_sec": 297474.9227756536,
         "features_shape": [
           50000,
           27
         ],
-        "memory_usage_mb": 78.9609375,
-        "cpu_utilization_change": 0.9999999999999996
+        "memory_usage_mb": 77.43359375,
+        "cpu_utilization_change": -1.2999999999999998
       },
       "scalars_stats": {
-        "wall_time": 0.2524528459907742,
-        "cpu_time": 0.617235056000002,
-        "cpu_efficiency": 0.611237965626419,
-        "throughput_points_per_sec": 198056.78879859895,
+        "wall_time": 0.23734329199942295,
+        "cpu_time": 0.5942784769999996,
+        "cpu_efficiency": 0.6259693206343541,
+        "throughput_points_per_sec": 210665.31764513304,
         "stats_shape": [
           [
             50000,
@@ -780,52 +780,52 @@
             4
           ]
         ],
-        "memory_usage_mb": 78.9609375,
-        "cpu_utilization_change": 0.7000000000000002
+        "memory_usage_mb": 77.43359375,
+        "cpu_utilization_change": -0.9
       }
     },
     "8_threads": {
       "features_basic": {
-        "wall_time": 0.7194308159960201,
-        "cpu_time": 2.612219086000003,
-        "cpu_efficiency": 0.45386905660683674,
-        "throughput_points_per_sec": 69499.38602612847,
+        "wall_time": 0.2718172750028316,
+        "cpu_time": 0.7527203199999999,
+        "cpu_efficiency": 0.3461518036299195,
+        "throughput_points_per_sec": 183947.10196207778,
         "features_shape": [
           50000,
           4
         ],
-        "memory_usage_mb": 80.9609375,
-        "cpu_utilization_change": -5.3
+        "memory_usage_mb": 79.43359375,
+        "cpu_utilization_change": -6.2
       },
       "features_geometric": {
-        "wall_time": 0.6916003179940162,
-        "cpu_time": 2.533602392999999,
-        "cpu_efficiency": 0.45792387725267064,
-        "throughput_points_per_sec": 72296.0916863439,
+        "wall_time": 0.25897893799992744,
+        "cpu_time": 0.7455760599999994,
+        "cpu_efficiency": 0.35986327003945795,
+        "throughput_points_per_sec": 193065.89325813827,
         "features_shape": [
           50000,
           5
         ],
-        "memory_usage_mb": 80.9609375,
-        "cpu_utilization_change": 2.1999999999999997
+        "memory_usage_mb": 79.43359375,
+        "cpu_utilization_change": 0.0
       },
       "features_all": {
-        "wall_time": 0.6739966879977146,
-        "cpu_time": 2.4600517790000005,
-        "cpu_efficiency": 0.45624329889295057,
-        "throughput_points_per_sec": 74184.34079926746,
+        "wall_time": 0.28171813700464554,
+        "cpu_time": 0.806264456000001,
+        "cpu_efficiency": 0.3577442974441443,
+        "throughput_points_per_sec": 177482.36067305633,
         "features_shape": [
           50000,
           27
         ],
-        "memory_usage_mb": 82.9609375,
-        "cpu_utilization_change": -3.8000000000000003
+        "memory_usage_mb": 83.68359375,
+        "cpu_utilization_change": -0.6000000000000001
       },
       "scalars_stats": {
-        "wall_time": 0.4310524860047735,
-        "cpu_time": 1.2721549109999941,
-        "cpu_efficiency": 0.3689095157503355,
-        "throughput_points_per_sec": 115995.15516875198,
+        "wall_time": 0.4058928710001055,
+        "cpu_time": 1.1897098120000003,
+        "cpu_efficiency": 0.36638664318881664,
+        "throughput_points_per_sec": 123185.21356830385,
         "stats_shape": [
           [
             50000,
@@ -840,52 +840,52 @@
             4
           ]
         ],
-        "memory_usage_mb": 82.9609375,
-        "cpu_utilization_change": 2.8
+        "memory_usage_mb": 83.68359375,
+        "cpu_utilization_change": -0.8999999999999999
       }
     },
     "32_threads": {
       "features_basic": {
-        "wall_time": 1.8103444689913886,
-        "cpu_time": 7.276803434000001,
-        "cpu_efficiency": 0.12561151273005697,
-        "throughput_points_per_sec": 27619.053089855817,
+        "wall_time": 0.5615016060037306,
+        "cpu_time": 1.9055342019999983,
+        "cpu_efficiency": 0.10605124397828404,
+        "throughput_points_per_sec": 89046.94032107151,
         "features_shape": [
           50000,
           4
         ],
-        "memory_usage_mb": 85.2734375,
-        "cpu_utilization_change": -2.2
+        "memory_usage_mb": 83.765625,
+        "cpu_utilization_change": -0.8999999999999999
       },
       "features_geometric": {
-        "wall_time": 1.6605058429995552,
-        "cpu_time": 6.6776482109999975,
-        "cpu_efficiency": 0.12567044402372862,
-        "throughput_points_per_sec": 30111.306268985765,
+        "wall_time": 0.49882505799178034,
+        "cpu_time": 1.6773712809999992,
+        "cpu_efficiency": 0.10508263707176017,
+        "throughput_points_per_sec": 100235.54189778474,
         "features_shape": [
           50000,
           5
         ],
-        "memory_usage_mb": 85.28125,
-        "cpu_utilization_change": 1.4999999999999998
+        "memory_usage_mb": 83.98828125,
+        "cpu_utilization_change": -0.3
       },
       "features_all": {
-        "wall_time": 1.906805043006898,
-        "cpu_time": 7.590859576,
-        "cpu_efficiency": 0.12440409816408371,
-        "throughput_points_per_sec": 26221.873171235955,
+        "wall_time": 0.6288839189946884,
+        "cpu_time": 2.1219568100000004,
+        "cpu_efficiency": 0.10544259172424486,
+        "throughput_points_per_sec": 79505.92866156957,
         "features_shape": [
           50000,
           27
         ],
-        "memory_usage_mb": 85.4140625,
-        "cpu_utilization_change": -2.5
+        "memory_usage_mb": 83.98046875,
+        "cpu_utilization_change": -0.9
       },
       "scalars_stats": {
-        "wall_time": 0.9490928599989275,
-        "cpu_time": 3.150399512,
-        "cpu_efficiency": 0.10373061361994784,
-        "throughput_points_per_sec": 52681.884046684856,
+        "wall_time": 0.8550612109975191,
+        "cpu_time": 2.8235881220000003,
+        "cpu_efficiency": 0.10319393240813964,
+        "throughput_points_per_sec": 58475.34580789804,
         "stats_shape": [
           [
             50000,
@@ -900,54 +900,126 @@
             4
           ]
         ],
-        "memory_usage_mb": 85.4140625,
+        "memory_usage_mb": 83.98046875,
+        "cpu_utilization_change": -0.9
+      }
+    }
+  },
+  "very_large": {
+    "1_threads": {
+      "features_basic": {
+        "wall_time": 1.3436080029932782,
+        "cpu_time": 1.343408138000001,
+        "cpu_efficiency": 0.9998512475418188,
+        "throughput_points_per_sec": 744264.6945926257,
+        "features_shape": [
+          1000000,
+          4
+        ],
+        "memory_usage_mb": 154.484375,
+        "cpu_utilization_change": -0.9
+      }
+    },
+    "2_threads": {
+      "features_basic": {
+        "wall_time": 1.1963639250025153,
+        "cpu_time": 1.9956458319999975,
+        "cpu_efficiency": 0.8340463091094132,
+        "throughput_points_per_sec": 835866.0597342047,
+        "features_shape": [
+          1000000,
+          4
+        ],
+        "memory_usage_mb": 154.484375,
+        "cpu_utilization_change": -0.30000000000000004
+      }
+    },
+    "4_threads": {
+      "features_basic": {
+        "wall_time": 3.4206303079990903,
+        "cpu_time": 8.061742314,
+        "cpu_efficiency": 0.5892000587689747,
+        "throughput_points_per_sec": 292343.7816888647,
+        "features_shape": [
+          1000000,
+          4
+        ],
+        "memory_usage_mb": 154.484375,
+        "cpu_utilization_change": -0.6000000000000001
+      }
+    },
+    "8_threads": {
+      "features_basic": {
+        "wall_time": 5.348978869995335,
+        "cpu_time": 15.472005607999996,
+        "cpu_efficiency": 0.3615644682854554,
+        "throughput_points_per_sec": 186951.57044074696,
+        "features_shape": [
+          1000000,
+          4
+        ],
+        "memory_usage_mb": 160.4921875,
         "cpu_utilization_change": 0.30000000000000004
+      }
+    },
+    "32_threads": {
+      "features_basic": {
+        "wall_time": 11.7870943260059,
+        "cpu_time": 39.459839307,
+        "cpu_efficiency": 0.10461611184557283,
+        "throughput_points_per_sec": 84838.55073541723,
+        "features_shape": [
+          1000000,
+          4
+        ],
+        "memory_usage_mb": 154.5390625,
+        "cpu_utilization_change": -0.30000000000000004
       }
     }
   },
   "small_large_radius": {
     "1_threads": {
       "features_basic": {
-        "wall_time": 0.01920899300603196,
-        "cpu_time": 0.019206196999995484,
-        "cpu_efficiency": 0.9998544428624865,
-        "throughput_points_per_sec": 52058.94966414858,
+        "wall_time": 0.0009791619959287345,
+        "cpu_time": 0.0009783290000058287,
+        "cpu_efficiency": 0.9991492767015372,
+        "throughput_points_per_sec": 1021281.4673750696,
         "features_shape": [
           1000,
           4
         ],
-        "memory_usage_mb": 68.6015625,
-        "cpu_utilization_change": 0.0
+        "memory_usage_mb": 93.13671875,
+        "cpu_utilization_change": -2.1999999999999997
       },
       "features_geometric": {
-        "wall_time": 0.013621172998682596,
-        "cpu_time": 0.013618268999998406,
-        "cpu_efficiency": 0.9997868025988312,
-        "throughput_points_per_sec": 73415.11631169484,
+        "wall_time": 0.0032157960085896775,
+        "cpu_time": 0.0032126210000029687,
+        "cpu_efficiency": 0.9990126834605715,
+        "throughput_points_per_sec": 310964.9981929547,
         "features_shape": [
           1000,
           5
         ],
-        "memory_usage_mb": 68.6015625,
-        "cpu_utilization_change": -0.3
+        "memory_usage_mb": 93.13671875,
+        "cpu_utilization_change": -0.6000000000000001
       },
       "features_all": {
-        "wall_time": 0.01922429900150746,
-        "cpu_time": 0.019220792000005815,
-        "cpu_efficiency": 0.9998175745445194,
-        "throughput_points_per_sec": 52017.50138829955,
+        "wall_time": 0.0031021390022942796,
+        "cpu_time": 0.003099611999999752,
+        "cpu_efficiency": 0.9991854000440796,
+        "throughput_points_per_sec": 322358.21775246697,
         "features_shape": [
           1000,
           27
         ],
-        "memory_usage_mb": 68.6015625,
-        "cpu_utilization_change": 0.9999999999999999
+        "memory_usage_mb": 93.13671875,
+        "cpu_utilization_change": 0.0
       },
       "scalars_stats": {
-        "wall_time": 0.005986767006106675,
-        "cpu_time": 0.005984810000001062,
-        "cpu_efficiency": 0.9996731113631754,
-        "throughput_points_per_sec": 167035.06232662324,
+        "wall_time": 0.0016888859972823411,
+        "cpu_time": 0.00168727100000865,
+        "cpu_efficiency": 0.9990437499770323,
+        "throughput_points_per_sec": 592106.2769240452,
         "stats_shape": [
           [
             1000,
@@ -962,52 +1034,52 @@
             4
           ]
         ],
-        "memory_usage_mb": 68.6015625,
-        "cpu_utilization_change": -0.9999999999999999
+        "memory_usage_mb": 93.13671875,
+        "cpu_utilization_change": -1.0000000000000004
       }
     },
     "2_threads": {
       "features_basic": {
-        "wall_time": 0.014709820999996737,
-        "cpu_time": 0.02735816799999924,
-        "cpu_efficiency": 0.9299286510694219,
-        "throughput_points_per_sec": 67981.79257247399,
+        "wall_time": 0.003952123995986767,
+        "cpu_time": 0.0058063769999989745,
+        "cpu_efficiency": 0.7345894265836714,
+        "throughput_points_per_sec": 253028.4983506242,
         "features_shape": [
           1000,
           4
         ],
-        "memory_usage_mb": 68.6015625,
-        "cpu_utilization_change": -0.30000000000000004
+        "memory_usage_mb": 93.13671875,
+        "cpu_utilization_change": 0.7000000000000001
       },
       "features_geometric": {
-        "wall_time": 0.015600430997437797,
-        "cpu_time": 0.027865966999996772,
-        "cpu_efficiency": 0.8931152929227871,
-        "throughput_points_per_sec": 64100.79312323097,
+        "wall_time": 0.0042364690016256645,
+        "cpu_time": 0.006134583000005023,
+        "cpu_efficiency": 0.7240207585197712,
+        "throughput_points_per_sec": 236045.63130670117,
         "features_shape": [
           1000,
           5
         ],
-        "memory_usage_mb": 69.6015625,
-        "cpu_utilization_change": 0.0
+        "memory_usage_mb": 93.13671875,
+        "cpu_utilization_change": -0.3
       },
       "features_all": {
-        "wall_time": 0.014194937990396284,
-        "cpu_time": 0.026453326000002164,
-        "cpu_efficiency": 0.9317873039635469,
-        "throughput_points_per_sec": 70447.64835722138,
+        "wall_time": 0.004353026000899263,
+        "cpu_time": 0.006526202000003423,
+        "cpu_efficiency": 0.7496167032605845,
+        "throughput_points_per_sec": 229725.2531442304,
         "features_shape": [
           1000,
           27
         ],
-        "memory_usage_mb": 69.6015625,
-        "cpu_utilization_change": 0.0
+        "memory_usage_mb": 93.13671875,
+        "cpu_utilization_change": -0.9
       },
       "scalars_stats": {
-        "wall_time": 0.004470058003789745,
-        "cpu_time": 0.006658397999999011,
-        "cpu_efficiency": 0.7447775839098705,
-        "throughput_points_per_sec": 223710.74360829173,
+        "wall_time": 0.006000638008117676,
+        "cpu_time": 0.008870263999995132,
+        "cpu_efficiency": 0.7391100736284558,
+        "throughput_points_per_sec": 166648.946103264,
         "stats_shape": [
           [
             1000,
@@ -1022,52 +1094,52 @@
             4
           ]
         ],
-        "memory_usage_mb": 69.6015625,
-        "cpu_utilization_change": 0.6
+        "memory_usage_mb": 93.13671875,
+        "cpu_utilization_change": 2.5
       }
     },
     "4_threads": {
       "features_basic": {
-        "wall_time": 0.013768345001153648,
-        "cpu_time": 0.04158006900000544,
-        "cpu_efficiency": 0.7549939552742441,
-        "throughput_points_per_sec": 72630.37060127489,
+        "wall_time": 0.011183215989149176,
+        "cpu_time": 0.02260684400000912,
+        "cpu_efficiency": 0.5053743936883638,
+        "throughput_points_per_sec": 89419.7162042008,
         "features_shape": [
           1000,
           4
         ],
-        "memory_usage_mb": 69.6015625,
-        "cpu_utilization_change": 0.0
+        "memory_usage_mb": 93.13671875,
+        "cpu_utilization_change": -0.30000000000000004
       },
       "features_geometric": {
-        "wall_time": 0.008520219998899847,
-        "cpu_time": 0.02293449599999775,
-        "cpu_efficiency": 0.6729431869998401,
-        "throughput_points_per_sec": 117367.86140840525,
+        "wall_time": 0.009470724005950615,
+        "cpu_time": 0.020380908000007025,
+        "cpu_efficiency": 0.5379976226527496,
+        "throughput_points_per_sec": 105588.54839098713,
         "features_shape": [
           1000,
           5
         ],
-        "memory_usage_mb": 71.6015625,
-        "cpu_utilization_change": 0.2999999999999998
+        "memory_usage_mb": 93.13671875,
+        "cpu_utilization_change": -0.6
       },
       "features_all": {
-        "wall_time": 0.014129453003988601,
-        "cpu_time": 0.042189639000000057,
-        "cpu_efficiency": 0.7464839401088341,
-        "throughput_points_per_sec": 70774.1481370659,
+        "wall_time": 0.0107088630029466,
+        "cpu_time": 0.021151485999993724,
+        "cpu_efficiency": 0.49378458745278986,
+        "throughput_points_per_sec": 93380.59509444138,
         "features_shape": [
           1000,
           27
         ],
-        "memory_usage_mb": 71.6015625,
-        "cpu_utilization_change": 0.0
+        "memory_usage_mb": 93.13671875,
+        "cpu_utilization_change": -0.6000000000000001
       },
       "scalars_stats": {
-        "wall_time": 0.01571922400034964,
-        "cpu_time": 0.034226767999996355,
-        "cpu_efficiency": 0.5443457005135091,
-        "throughput_points_per_sec": 63616.37190091299,
+        "wall_time": 0.015006079003796913,
+        "cpu_time": 0.031422456000001375,
+        "cpu_efficiency": 0.523495444613658,
+        "throughput_points_per_sec": 66639.6598169965,
         "stats_shape": [
           [
             1000,
@@ -1082,52 +1154,52 @@
             4
           ]
         ],
-        "memory_usage_mb": 71.6015625,
-        "cpu_utilization_change": -1.0
+        "memory_usage_mb": 93.13671875,
+        "cpu_utilization_change": -0.6000000000000001
       }
     },
     "8_threads": {
       "features_basic": {
-        "wall_time": 0.04038615900208242,
-        "cpu_time": 0.13743466199999688,
-        "cpu_efficiency": 0.4253767422921748,
-        "throughput_points_per_sec": 24760.95832605515,
+        "wall_time": 0.015649469001800753,
+        "cpu_time": 0.03836191899999619,
+        "cpu_efficiency": 0.3064155003883995,
+        "throughput_points_per_sec": 63899.9316772302,
         "features_shape": [
           1000,
           4
         ],
-        "memory_usage_mb": 73.8515625,
-        "cpu_utilization_change": -0.4
+        "memory_usage_mb": 93.13671875,
+        "cpu_utilization_change": -0.6
       },
       "features_geometric": {
-        "wall_time": 0.040377953002462164,
-        "cpu_time": 0.12590483099999972,
-        "cpu_efficiency": 0.38976973087368466,
-        "throughput_points_per_sec": 24765.990488399006,
+        "wall_time": 0.01598389098944608,
+        "cpu_time": 0.037609005999996725,
+        "cpu_efficiency": 0.2941164797172148,
+        "throughput_points_per_sec": 62562.98924087287,
         "features_shape": [
           1000,
           5
         ],
-        "memory_usage_mb": 76.3515625,
-        "cpu_utilization_change": 0.30000000000000004
+        "memory_usage_mb": 93.13671875,
+        "cpu_utilization_change": -0.6
       },
       "features_all": {
-        "wall_time": 0.039387612996506505,
-        "cpu_time": 0.12583465699999863,
-        "cpu_efficiency": 0.39934717867759456,
-        "throughput_points_per_sec": 25388.692635136213,
+        "wall_time": 0.004537093001999892,
+        "cpu_time": 0.006903387000008365,
+        "cpu_efficiency": 0.19019301006628697,
+        "throughput_points_per_sec": 220405.44453446576,
         "features_shape": [
           1000,
           27
         ],
-        "memory_usage_mb": 76.3515625,
-        "cpu_utilization_change": 0.0
+        "memory_usage_mb": 93.13671875,
+        "cpu_utilization_change": 1.6
       },
       "scalars_stats": {
-        "wall_time": 0.023869249009294435,
-        "cpu_time": 0.06169967700000001,
-        "cpu_efficiency": 0.3231127892627393,
-        "throughput_points_per_sec": 41894.90836559669,
+        "wall_time": 0.02384349299245514,
+        "cpu_time": 0.06488947599999051,
+        "cpu_efficiency": 0.3401844059746388,
+        "throughput_points_per_sec": 41940.16373005552,
         "stats_shape": [
           [
             1000,
@@ -1142,52 +1214,52 @@
             4
           ]
         ],
-        "memory_usage_mb": 76.3515625,
-        "cpu_utilization_change": 1.2999999999999998
+        "memory_usage_mb": 93.13671875,
+        "cpu_utilization_change": 0.6
       }
     },
     "32_threads": {
       "features_basic": {
-        "wall_time": 0.04351190000306815,
-        "cpu_time": 0.2306562079999992,
-        "cpu_efficiency": 0.16565598145545743,
-        "throughput_points_per_sec": 22982.21865580421,
+        "wall_time": 0.017098957003327087,
+        "cpu_time": 0.1182526869999947,
+        "cpu_efficiency": 0.21611823855869045,
+        "throughput_points_per_sec": 58483.09927941346,
         "features_shape": [
           1000,
           4
         ],
-        "memory_usage_mb": 76.671875,
-        "cpu_utilization_change": -1.3000000000000003
+        "memory_usage_mb": 93.140625,
+        "cpu_utilization_change": -2.5
       },
       "features_geometric": {
-        "wall_time": 0.04709145400556736,
-        "cpu_time": 0.24595783400000215,
-        "cpu_efficiency": 0.16321819903015466,
-        "throughput_points_per_sec": 21235.275510536914,
+        "wall_time": 0.0192997989943251,
+        "cpu_time": 0.13325646799999902,
+        "cpu_efficiency": 0.21576725364986582,
+        "throughput_points_per_sec": 51814.011135247536,
         "features_shape": [
           1000,
           5
         ],
-        "memory_usage_mb": 76.75390625,
-        "cpu_utilization_change": 0.0
+        "memory_usage_mb": 93.140625,
+        "cpu_utilization_change": -0.2999999999999998
       },
       "features_all": {
-        "wall_time": 0.047582426996086724,
-        "cpu_time": 0.2650020509999962,
-        "cpu_efficiency": 0.17404143959346488,
-        "throughput_points_per_sec": 21016.162123933736,
+        "wall_time": 0.021092907001730055,
+        "cpu_time": 0.1447828229999999,
+        "cpu_efficiency": 0.2145016435325343,
+        "throughput_points_per_sec": 47409.302089938545,
         "features_shape": [
           1000,
           27
         ],
-        "memory_usage_mb": 76.76171875,
-        "cpu_utilization_change": 1.0
+        "memory_usage_mb": 93.14453125,
+        "cpu_utilization_change": 0.2999999999999998
       },
       "scalars_stats": {
-        "wall_time": 0.027515670997672714,
-        "cpu_time": 0.08353492900000248,
-        "cpu_efficiency": 0.0948719924537138,
-        "throughput_points_per_sec": 36342.92618503035,
+        "wall_time": 0.02769999399606604,
+        "cpu_time": 0.08832439600000441,
+        "cpu_efficiency": 0.09964397015364455,
+        "throughput_points_per_sec": 36101.09085734893,
         "stats_shape": [
           [
             1000,
@@ -1202,54 +1274,54 @@
             4
           ]
         ],
-        "memory_usage_mb": 76.76171875,
-        "cpu_utilization_change": -2.5
+        "memory_usage_mb": 93.14453125,
+        "cpu_utilization_change": 0.0
       }
     }
   },
   "medium_large_radius": {
     "1_threads": {
       "features_basic": {
-        "wall_time": 0.10366524700657465,
-        "cpu_time": 0.10365397600000392,
-        "cpu_efficiency": 0.9998912749750164,
-        "throughput_points_per_sec": 96464.34353613011,
+        "wall_time": 0.02020220500708092,
+        "cpu_time": 0.020104182000011406,
+        "cpu_efficiency": 0.9951479055362938,
+        "throughput_points_per_sec": 494995.47185542254,
         "features_shape": [
           10000,
           4
         ],
-        "memory_usage_mb": 76.76171875,
-        "cpu_utilization_change": -1.9
+        "memory_usage_mb": 93.14453125,
+        "cpu_utilization_change": 0.5999999999999996
       },
       "features_geometric": {
-        "wall_time": 0.10389718599617481,
-        "cpu_time": 0.10388404500000092,
-        "cpu_efficiency": 0.9998735192291505,
-        "throughput_points_per_sec": 96248.99754617194,
+        "wall_time": 0.017266659007873386,
+        "cpu_time": 0.017265515999994818,
+        "cpu_efficiency": 0.9999338026031529,
+        "throughput_points_per_sec": 579150.8360384092,
         "features_shape": [
           10000,
           5
         ],
-        "memory_usage_mb": 76.76171875,
-        "cpu_utilization_change": -1.5999999999999999
+        "memory_usage_mb": 93.14453125,
+        "cpu_utilization_change": -2.5
       },
       "features_all": {
-        "wall_time": 0.1003675399988424,
-        "cpu_time": 0.10033653999999359,
-        "cpu_efficiency": 0.9996911352131459,
-        "throughput_points_per_sec": 99633.8059109084,
+        "wall_time": 0.019442853998043574,
+        "cpu_time": 0.019439251999997964,
+        "cpu_efficiency": 0.999814739232935,
+        "throughput_points_per_sec": 514327.7834111311,
         "features_shape": [
           10000,
           27
         ],
-        "memory_usage_mb": 76.76171875,
-        "cpu_utilization_change": 0.3
+        "memory_usage_mb": 93.14453125,
+        "cpu_utilization_change": 0.6000000000000001
       },
       "scalars_stats": {
-        "wall_time": 0.025350099997012876,
-        "cpu_time": 0.025347163999995814,
-        "cpu_efficiency": 0.9998841820340982,
-        "throughput_points_per_sec": 394475.7614833215,
+        "wall_time": 0.030130769999232143,
+        "cpu_time": 0.03012876800001152,
+        "cpu_efficiency": 0.9999335563206425,
+        "throughput_points_per_sec": 331886.63948033325,
         "stats_shape": [
           [
             10000,
@@ -1264,52 +1336,52 @@
             4
           ]
         ],
-        "memory_usage_mb": 76.76171875,
-        "cpu_utilization_change": 0.0
+        "memory_usage_mb": 93.14453125,
+        "cpu_utilization_change": -1.3
       }
     },
     "2_threads": {
       "features_basic": {
-        "wall_time": 0.09938072199292947,
-        "cpu_time": 0.18831917699999678,
-        "cpu_efficiency": 0.947463316946897,
-        "throughput_points_per_sec": 100623.1369572004,
+        "wall_time": 0.019422628000029363,
+        "cpu_time": 0.02963805299999933,
+        "cpu_efficiency": 0.7629774147956323,
+        "throughput_points_per_sec": 514863.38511888724,
         "features_shape": [
           10000,
           4
         ],
-        "memory_usage_mb": 76.76171875,
+        "memory_usage_mb": 93.14453125,
         "cpu_utilization_change": -0.30000000000000004
       },
       "features_geometric": {
-        "wall_time": 0.09909622000122909,
-        "cpu_time": 0.18751337399999812,
-        "cpu_efficiency": 0.9461176924693616,
-        "throughput_points_per_sec": 100912.02267731272,
+        "wall_time": 0.02375659799145069,
+        "cpu_time": 0.0364482190000075,
+        "cpu_efficiency": 0.7671178131886593,
+        "throughput_points_per_sec": 420935.69136450894,
         "features_shape": [
           10000,
           5
         ],
-        "memory_usage_mb": 76.76171875,
-        "cpu_utilization_change": 0.0
+        "memory_usage_mb": 93.14453125,
+        "cpu_utilization_change": -1.2999999999999998
       },
       "features_all": {
-        "wall_time": 0.10240400300244801,
-        "cpu_time": 0.1928418910000005,
-        "cpu_efficiency": 0.9415739880568464,
-        "throughput_points_per_sec": 97652.43258860639,
+        "wall_time": 0.016813102003652602,
+        "cpu_time": 0.025096796999989124,
+        "cpu_efficiency": 0.7463464206229437,
+        "throughput_points_per_sec": 594774.2420064737,
         "features_shape": [
           10000,
           27
         ],
-        "memory_usage_mb": 76.76171875,
-        "cpu_utilization_change": -0.30000000000000027
+        "memory_usage_mb": 93.14453125,
+        "cpu_utilization_change": 0.30000000000000027
       },
       "scalars_stats": {
-        "wall_time": 0.022028317995136604,
-        "cpu_time": 0.03580217700000077,
-        "cpu_efficiency": 0.8126398258801499,
-        "throughput_points_per_sec": 453961.1241406535,
+        "wall_time": 0.027263904994470067,
+        "cpu_time": 0.045098741000003884,
+        "cpu_efficiency": 0.8270777977173712,
+        "throughput_points_per_sec": 366785.3156775707,
         "stats_shape": [
           [
             10000,
@@ -1324,52 +1396,52 @@
             4
           ]
         ],
-        "memory_usage_mb": 76.76171875,
-        "cpu_utilization_change": -0.9
+        "memory_usage_mb": 93.14453125,
+        "cpu_utilization_change": 0.8999999999999999
       }
     },
     "4_threads": {
       "features_basic": {
-        "wall_time": 0.07008103500993457,
-        "cpu_time": 0.23206153900000004,
-        "cpu_efficiency": 0.8278328757812417,
-        "throughput_points_per_sec": 142691.95651266305,
+        "wall_time": 0.041926106001483276,
+        "cpu_time": 0.09328590999999165,
+        "cpu_efficiency": 0.5562519328452024,
+        "throughput_points_per_sec": 238514.87661759518,
         "features_shape": [
           10000,
           4
         ],
-        "memory_usage_mb": 76.76171875,
-        "cpu_utilization_change": 0.6000000000000001
+        "memory_usage_mb": 93.14453125,
+        "cpu_utilization_change": 0.6
       },
       "features_geometric": {
-        "wall_time": 0.06844811100745574,
-        "cpu_time": 0.22976079000000027,
-        "cpu_efficiency": 0.839178710041295,
-        "throughput_points_per_sec": 146096.06974998544,
+        "wall_time": 0.04597478099458385,
+        "cpu_time": 0.10430297700000324,
+        "cpu_efficiency": 0.5671749530046204,
+        "throughput_points_per_sec": 217510.55216941805,
         "features_shape": [
           10000,
           5
         ],
-        "memory_usage_mb": 76.76171875,
-        "cpu_utilization_change": -0.6000000000000001
+        "memory_usage_mb": 93.14453125,
+        "cpu_utilization_change": -2.2
       },
       "features_all": {
-        "wall_time": 0.07567171799018979,
-        "cpu_time": 0.2517408729999957,
-        "cpu_efficiency": 0.8316874510257314,
-        "throughput_points_per_sec": 132149.76830969288,
+        "wall_time": 0.04956433500046842,
+        "cpu_time": 0.11259136900000044,
+        "cpu_efficiency": 0.5679051731398009,
+        "throughput_points_per_sec": 201757.9777859522,
         "features_shape": [
           10000,
           27
         ],
-        "memory_usage_mb": 76.76171875,
-        "cpu_utilization_change": -0.6000000000000001
+        "memory_usage_mb": 93.14453125,
+        "cpu_utilization_change": 0.29999999999999993
       },
       "scalars_stats": {
-        "wall_time": 0.05944116099271923,
-        "cpu_time": 0.13821622599999728,
-        "cpu_efficiency": 0.581315302778688,
-        "throughput_points_per_sec": 168233.59155493058,
+        "wall_time": 0.07717572100227699,
+        "cpu_time": 0.17469439399999942,
+        "cpu_efficiency": 0.5658981598462982,
+        "throughput_points_per_sec": 129574.42923928058,
         "stats_shape": [
           [
             10000,
@@ -1384,52 +1456,52 @@
             4
           ]
         ],
-        "memory_usage_mb": 76.76171875,
-        "cpu_utilization_change": -1.6
+        "memory_usage_mb": 93.14453125,
+        "cpu_utilization_change": -0.10000000000000009
       }
     },
     "8_threads": {
       "features_basic": {
-        "wall_time": 0.13648578499851283,
-        "cpu_time": 0.4971297020000094,
-        "cpu_efficiency": 0.4552943938497205,
-        "throughput_points_per_sec": 73267.70330044965,
+        "wall_time": 0.07194206600252073,
+        "cpu_time": 0.1956387860000035,
+        "cpu_efficiency": 0.33992418634660254,
+        "throughput_points_per_sec": 139000.73428040856,
         "features_shape": [
           10000,
           4
         ],
-        "memory_usage_mb": 76.76171875,
-        "cpu_utilization_change": -2.2
+        "memory_usage_mb": 93.14453125,
+        "cpu_utilization_change": -0.8999999999999999
       },
       "features_geometric": {
-        "wall_time": 0.15587545199377928,
-        "cpu_time": 0.5469208909999992,
-        "cpu_efficiency": 0.43858805540290097,
-        "throughput_points_per_sec": 64153.78349888655,
+        "wall_time": 0.06476360200031195,
+        "cpu_time": 0.17321840699999314,
+        "cpu_efficiency": 0.3343282369454196,
+        "throughput_points_per_sec": 154407.71808757383,
         "features_shape": [
           10000,
           5
         ],
-        "memory_usage_mb": 77.51171875,
-        "cpu_utilization_change": 0.7000000000000001
+        "memory_usage_mb": 93.14453125,
+        "cpu_utilization_change": 0.9999999999999999
       },
       "features_all": {
-        "wall_time": 0.14340747401001863,
-        "cpu_time": 0.5082717020000018,
-        "cpu_efficiency": 0.44303104275835486,
-        "throughput_points_per_sec": 69731.37257338056,
+        "wall_time": 0.09386042501137126,
+        "cpu_time": 0.2551421559999909,
+        "cpu_efficiency": 0.3397893147845328,
+        "throughput_points_per_sec": 106541.17535466616,
         "features_shape": [
           10000,
           27
         ],
-        "memory_usage_mb": 77.51171875,
-        "cpu_utilization_change": 0.30000000000000004
+        "memory_usage_mb": 93.14453125,
+        "cpu_utilization_change": -1.0
       },
       "scalars_stats": {
-        "wall_time": 0.10977439100679476,
-        "cpu_time": 0.311157129999998,
-        "cpu_efficiency": 0.35431434320225264,
-        "throughput_points_per_sec": 91095.92782328463,
+        "wall_time": 0.1185035990056349,
+        "cpu_time": 0.3359848910000096,
+        "cpu_efficiency": 0.3544036782630051,
+        "throughput_points_per_sec": 84385.62274825506,
         "stats_shape": [
           [
             10000,
@@ -1444,52 +1516,52 @@
             4
           ]
         ],
-        "memory_usage_mb": 77.51171875,
-        "cpu_utilization_change": 0.9999999999999999
+        "memory_usage_mb": 93.14453125,
+        "cpu_utilization_change": 1.0
       }
     },
     "32_threads": {
       "features_basic": {
-        "wall_time": 0.27056956000160426,
-        "cpu_time": 1.141934839000001,
-        "cpu_efficiency": 0.1318901642835892,
-        "throughput_points_per_sec": 36959.072557684274,
+        "wall_time": 0.14329328999156132,
+        "cpu_time": 0.5234324229999885,
+        "cpu_efficiency": 0.1141523320436912,
+        "throughput_points_per_sec": 69786.93838761681,
         "features_shape": [
           10000,
           4
         ],
-        "memory_usage_mb": 77.69140625,
-        "cpu_utilization_change": -1.2999999999999998
+        "memory_usage_mb": 93.15234375,
+        "cpu_utilization_change": -0.2999999999999998
       },
       "features_geometric": {
-        "wall_time": 0.3949014090030687,
-        "cpu_time": 1.6279950699999972,
-        "cpu_efficiency": 0.12882923377238337,
-        "throughput_points_per_sec": 25322.77619683624,
+        "wall_time": 0.13657663599587977,
+        "cpu_time": 0.5065156620000124,
+        "cpu_efficiency": 0.11589547745177955,
+        "throughput_points_per_sec": 73218.9655066748,
         "features_shape": [
           10000,
           5
         ],
-        "memory_usage_mb": 77.6875,
-        "cpu_utilization_change": 0.29999999999999993
+        "memory_usage_mb": 93.1484375,
+        "cpu_utilization_change": -0.3
       },
       "features_all": {
-        "wall_time": 0.42816545700770803,
-        "cpu_time": 1.749244141999995,
-        "cpu_efficiency": 0.12766998958656245,
-        "throughput_points_per_sec": 23355.45718677622,
+        "wall_time": 0.05675408599199727,
+        "cpu_time": 0.22154032800000323,
+        "cpu_efficiency": 0.12198478979956284,
+        "throughput_points_per_sec": 176198.7674580835,
         "features_shape": [
           10000,
           27
         ],
-        "memory_usage_mb": 77.77734375,
-        "cpu_utilization_change": -1.9
+        "memory_usage_mb": 93.16796875,
+        "cpu_utilization_change": -0.7000000000000001
       },
       "scalars_stats": {
-        "wall_time": 0.215978691005148,
-        "cpu_time": 0.6992447370000008,
-        "cpu_efficiency": 0.10117386085430614,
-        "throughput_points_per_sec": 46300.864004040304,
+        "wall_time": 0.21144466400437523,
+        "cpu_time": 0.6847964210000015,
+        "cpu_efficiency": 0.10120798392816022,
+        "throughput_points_per_sec": 47293.69760682672,
         "stats_shape": [
           [
             10000,
@@ -1504,15 +1576,15 @@
             4
           ]
         ],
-        "memory_usage_mb": 77.77734375,
-        "cpu_utilization_change": 0.0
+        "memory_usage_mb": 93.16796875,
+        "cpu_utilization_change": -0.30000000000000004
       }
     }
   },
   "system_info": {
     "cpu_count": 32,
     "cpu_freq": {
-      "current": 1125.301125,
+      "current": 899.0268124999999,
       "min": 800.0,
       "max": 4675.0
     },
