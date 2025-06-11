@@ -31,20 +31,37 @@ class PerformanceBenchmark:
         """Generate synthetic 3D point cloud data for benchmarking."""
         np.random.seed(42)  # Reproducible results
         
-        # Generate points in 3D space with some structure
-        points = np.random.randn(n_points, 3) * 10
+        print(f"    Generating {n_points:,} point dataset...")
         
-        # Add some clustered regions for realistic neighbor patterns
-        n_clusters = max(1, n_points // 1000)
-        for i in range(n_clusters):
-            cluster_center = np.random.randn(3) * 50
-            cluster_size = np.random.randint(50, 200)
-            cluster_points = np.random.randn(cluster_size, 3) * 2 + cluster_center
-            if i == 0:
-                points[:cluster_size] = cluster_points
-            else:
-                start_idx = min(i * cluster_size, n_points - cluster_size)
-                points[start_idx:start_idx + cluster_size] = cluster_points
+        if n_points >= 1000000:  # Optimized generation for large datasets
+            # Generate base points efficiently
+            points = np.random.randn(n_points, 3).astype(np.float64) * 10
+            
+            # Add fewer, larger clusters for large datasets
+            n_clusters = min(100, n_points // 10000)  # Much fewer clusters
+            cluster_size = n_points // n_clusters
+            
+            for i in range(n_clusters):
+                start_idx = i * cluster_size
+                end_idx = min((i + 1) * cluster_size, n_points)
+                cluster_center = np.random.randn(3) * 50
+                points[start_idx:end_idx] += cluster_center
+                points[start_idx:end_idx] *= 0.5  # Tighter clusters
+        else:
+            # Original method for smaller datasets
+            points = np.random.randn(n_points, 3) * 10
+            
+            # Add some clustered regions for realistic neighbor patterns
+            n_clusters = max(1, n_points // 1000)
+            for i in range(n_clusters):
+                cluster_center = np.random.randn(3) * 50
+                cluster_size = np.random.randint(50, 200)
+                cluster_points = np.random.randn(cluster_size, 3) * 2 + cluster_center
+                if i == 0:
+                    points[:cluster_size] = cluster_points
+                else:
+                    start_idx = min(i * cluster_size, n_points - cluster_size)
+                    points[start_idx:start_idx + cluster_size] = cluster_points
         
         # Generate scalar fields for scalars_stats testing
         scalar_fields = [
@@ -53,7 +70,9 @@ class PerformanceBenchmark:
             np.random.uniform(0, 255, n_points),  # Color-like field
         ]
         
-        return points.astype(np.float64), scalar_fields
+        points = points.astype(np.float64)
+        print(f"    Dataset ready: {points.shape}")
+        return points, scalar_fields
 
     def measure_cpu_utilization(self, duration: float = 0.1) -> float:
         """Measure average CPU utilization over a short period."""
@@ -171,6 +190,7 @@ class PerformanceBenchmark:
             'small': {'n_points': 1000, 'search_radius': 0.15},
             'medium': {'n_points': 10000, 'search_radius': 0.15}, 
             'large': {'n_points': 50000, 'search_radius': 0.15},
+            'very_large': {'n_points': 10000000, 'search_radius': 0.15},
             'small_large_radius': {'n_points': 1000, 'search_radius': 0.3},
             'medium_large_radius': {'n_points': 10000, 'search_radius': 0.3},
         }
@@ -201,7 +221,12 @@ class PerformanceBenchmark:
                 results[scenario_name][f'{thread_count}_threads'] = {}
                 
                 # Test compute_features with different feature sets
-                for feature_set_name, features in feature_sets.items():
+                # For very large datasets, only test basic features to save time
+                test_feature_sets = feature_sets
+                if scenario_name == 'very_large':
+                    test_feature_sets = {'basic': feature_sets['basic']}
+                
+                for feature_set_name, features in test_feature_sets.items():
                     try:
                         result = self.benchmark_compute_features(
                             points, scenario['search_radius'], 
@@ -217,20 +242,21 @@ class PerformanceBenchmark:
                         print(f"    Features ({feature_set_name}) failed: {e}")
                         results[scenario_name][f'{thread_count}_threads'][f'features_{feature_set_name}'] = {'error': str(e)}
                 
-                # Test compute_scalars_stats
-                try:
-                    result = self.benchmark_compute_scalars_stats(
-                        points, scalar_fields, scenario['search_radius'], thread_count
-                    )
-                    results[scenario_name][f'{thread_count}_threads']['scalars_stats'] = result
-                    
-                    print(f"    Scalars stats: {result['wall_time']:.3f}s, "
-                          f"{result['throughput_points_per_sec']:.0f} pts/s, "
-                          f"CPU eff: {result['cpu_efficiency']:.2f}")
-                          
-                except Exception as e:
-                    print(f"    Scalars stats failed: {e}")
-                    results[scenario_name][f'{thread_count}_threads']['scalars_stats'] = {'error': str(e)}
+                # Test compute_scalars_stats (skip for very large datasets)
+                if scenario_name != 'very_large':
+                    try:
+                        result = self.benchmark_compute_scalars_stats(
+                            points, scalar_fields, scenario['search_radius'], thread_count
+                        )
+                        results[scenario_name][f'{thread_count}_threads']['scalars_stats'] = result
+                        
+                        print(f"    Scalars stats: {result['wall_time']:.3f}s, "
+                              f"{result['throughput_points_per_sec']:.0f} pts/s, "
+                              f"CPU eff: {result['cpu_efficiency']:.2f}")
+                              
+                    except Exception as e:
+                        print(f"    Scalars stats failed: {e}")
+                        results[scenario_name][f'{thread_count}_threads']['scalars_stats'] = {'error': str(e)}
         
         return results
 
@@ -348,7 +374,7 @@ def main():
     
     if len(sys.argv) > 1 and sys.argv[1] == 'compare':
         # Compare existing results
-        benchmark.compare_results('benchmark_results_original.json', 'benchmark_results_optimized.json')
+        benchmark.compare_results('benchmark_results_original.json', 'benchmark_results_current_ultra.json')
     else:
         # Run benchmarks
         version = sys.argv[1] if len(sys.argv) > 1 else 'test'
