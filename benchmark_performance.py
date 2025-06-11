@@ -374,7 +374,7 @@ def main():
     
     if len(sys.argv) > 1 and sys.argv[1] == 'compare':
         # Compare existing results
-        benchmark.compare_results('benchmark_results_original.json', 'benchmark_results_ultra_optimized.json')
+        benchmark.compare_results(sys.argv[2], sys.argv[3])
     else:
         # Run benchmarks
         version = sys.argv[1] if len(sys.argv) > 1 else 'test'
