@@ -33,7 +33,7 @@ def compute_features(
     *,
     cKDTree kdtree=None,
     int num_threads=-1,
-    int max_k_neighbors=5000,
+    int max_k_neighbors=50000,
     bint euclidean_distance=True,
     feature_names=FEATURE_NAMES,
     float eps=0.0,
