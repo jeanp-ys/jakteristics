@@ -260,6 +260,69 @@ def test_compute_scalars_stats_euclidean_distance_false():
     _check_scalar_stats_correctness(points, scalar_fields, radius, features_list, p=1)
 
 
+def test_compute_scalars_stats_different_query_points():
+    """Test that demonstrates the bug when query points differ from kdtree points."""
+    # Create a simple, deterministic case to show the bug clearly
+    
+    # Kdtree points: 5 points in a line
+    kdtree_points = np.array([
+        [0.0, 0.0, 0.0],
+        [1.0, 0.0, 0.0], 
+        [2.0, 0.0, 0.0],
+        [3.0, 0.0, 0.0],
+        [4.0, 0.0, 0.0]
+    ])
+    
+    # Scalar fields for kdtree points: simple values 10, 20, 30, 40, 50
+    scalar_fields = [np.array([10.0, 20.0, 30.0, 40.0, 50.0])]
+    
+    # Query points: only 2 points
+    query_points = np.array([
+        [0.5, 0.0, 0.0],  # Should find neighbors at indices 0,1 with values 10,20
+        [3.5, 0.0, 0.0]   # Should find neighbors at indices 3,4 with values 40,50  
+    ])
+    
+    # Build kdtree from the 5 kdtree points
+    kdtree = jakteristics.cKDTree(kdtree_points)
+    
+    radius = 1.1  # Will find 2 neighbors for each query point
+    
+    print(f"Kdtree built from {kdtree_points.shape[0]} points")
+    print(f"Scalar field has {len(scalar_fields[0])} values: {scalar_fields[0]}")
+    print(f"Querying at {query_points.shape[0]} different points")
+    
+    # This exposes the bug: function expects scalar fields length to match query points
+    # But logically, scalar fields should match kdtree points since neighbor indices
+    # reference the kdtree points
+    features_list = jakteristics.compute_scalars_stats(
+        query_points, radius, scalar_fields, kdtree=kdtree
+    )
+    print(f"Result shape: {features_list[0].shape}")
+    print(f"Results: {features_list[0]}")
+    
+    # With the bug, we get garbage because:
+    # - Neighbor indices are 0,1,3,4 (referencing kdtree points)  
+    # - But scalar field was resized to length 2 (matching query points)
+    # - So indices 3,4 access out-of-bounds memory -> garbage values
+    
+    # The first query point's neighbors should give mean=(10+20)/2=15, but doesn't
+    # The second query point's neighbors access out-of-bounds -> garbage
+    
+    # This test should FAIL to demonstrate the bug exists
+    # Expected: mean should be 15.0 for first query point, 45.0 for second
+    # Actual: we get NaN and garbage values due to the indexing bug
+    expected_mean_1 = 15.0  # (10 + 20) / 2
+    expected_mean_2 = 45.0  # (40 + 50) / 2
+    
+    actual_mean_1 = features_list[0][0, 0]  # mean for first query point
+    actual_mean_2 = features_list[0][1, 0]  # mean for second query point
+    
+    assert np.isclose(actual_mean_1, expected_mean_1), \
+        f"Expected mean {expected_mean_1}, got {actual_mean_1}"
+    assert np.isclose(actual_mean_2, expected_mean_2), \
+        f"Expected mean {expected_mean_2}, got {actual_mean_2}"
+    
+
 def test_compute_scalars_stats_eps():
     n_points = 1000
     points = np.random.random((n_points, 3)) * 10
