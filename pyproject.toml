@@ -1,2 +1,62 @@
 [build-system]
-requires = ["setuptools", "wheel", "Cython>=0.25", "numpy", "scipy"]
+requires = ["setuptools>=45", "wheel", "Cython>=0.25", "numpy", "scipy"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "jakteristics"
+description = "Point cloud geometric properties from python."
+authors = [{ name = "David Caron", email = "david.caron@jakarto.com" }]
+license = { text = "BSD" }
+keywords = ["jakteristics"]
+classifiers = [
+    "Development Status :: 2 - Pre-Alpha",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: BSD License",
+    "Natural Language :: English",
+    "Programming Language :: Cython",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+]
+requires-python = ">=3.7"
+dynamic = ["version", "readme"]
+dependencies = ["cython>=0.25", "laspy>=2.1.1", "scipy>=1.7.3", "typer>=0.16.0"]
+
+[project.urls]
+Homepage = "https://github.com/jakarto3d/jakteristics"
+
+[project.scripts]
+jakteristics = "jakteristics.__main__:app"
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[tool.setuptools]
+packages = ["jakteristics"]
+zip-safe = false
+
+[tool.setuptools.package-data]
+"*" = ["*.pyx", "*.pxd", "*.h", "*.cpp"]
+
+[tool.setuptools.dynamic]
+version = { attr = "jakteristics.__about__.__version__" }
+readme = { file = ["README.rst", "HISTORY.rst"], content-type = "text/x-rst" }
+
+[dependency-groups]
+dev = [
+    "black>=23.3.0",
+    "bump2version>=1.0.1",
+    "pytest>=7.4.4",
+    "pytest-runner>=6.0.1",
+    "twine>=4.0.2",
+    "wheel>=0.42.0",
+]
+
+[tool.uv]
+cache-keys = [
+    { file = "pyproject.toml" },
+    { file = "setup.py" },
+    { file = "jakteristics/**/*.pxd" },
+    { file = "jakteristics/**/*.pyx" },
+    { file = "jakteristics/**/*.h" },
+    { file = "jakteristics/**/*.cxx" },
+]

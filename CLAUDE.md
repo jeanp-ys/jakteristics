@@ -5,19 +5,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Build and Development Commands
 
 **Development Setup:**
-```bash
-make install-dev    # Install in development mode with dev dependencies
-make build          # Build Cython extensions in place (required for development)
-```
+Have `uv` installed.
 
 **Testing:**
 ```bash
-pytest             # Run tests
-```
-
-**Cleanup:**
-```bash
-make clean          # Remove build artifacts, compiled extensions, and __pycache__
+uv run pytest
 ```
 
 ## Architecture Overview

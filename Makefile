@@ -4,27 +4,16 @@
 help:
 	@echo "make build"
 	@echo "	   build extensions in place"
-	@echo "make install"
-	@echo "	   install in the current python environment"
-	@echo "make install-dev"
-	@echo "	   install in development mode with dev dependencies"
 	@echo "make test"
 	@echo "	   run tests"
 	@echo "make clean"
 	@echo "	   remove build artifacts and __pycache__"
 
 build:
-	python setup.py build_ext -i
-
-install:
-	pip install .
-
-install-dev:
-	pip install -r requirements-dev.txt
-	pip install -e .
+	uv build
 
 test:
-	python setup.py pytest
+	uv run pytest
 
 clean:
 	rm -rf ./**/__pycache__
