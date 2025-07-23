@@ -6,7 +6,7 @@ import numpy as np
 import pytest
 
 import jakteristics
-from jakteristics import FEATURE_NAMES, extension, las_utils, utils
+from jakteristics import FEATURE_NAMES, las_utils, utils
 
 
 data_dir = Path(__file__).parent / "data"
@@ -75,7 +75,7 @@ def test_compute_features():
     n_points = 1000
     points = np.random.random((n_points, 3)) * 10
 
-    features = extension.compute_features(points, 0.15, feature_names=FEATURE_NAMES)
+    features = jakteristics.compute_features(points, 0.15, feature_names=FEATURE_NAMES)
 
     assert features.shape == (n_points, len(FEATURE_NAMES))
 
@@ -84,10 +84,10 @@ def test_compute_some_features():
     input_path = data_dir / "test_0.02_seconde.las"
     xyz = las_utils.read_las_xyz(input_path)
     n_points = xyz.shape[0]
-    all_features = extension.compute_features(xyz, 0.15, feature_names=FEATURE_NAMES)
+    all_features = jakteristics.compute_features(xyz, 0.15, feature_names=FEATURE_NAMES)
 
     for name in FEATURE_NAMES:
-        features = extension.compute_features(xyz, 0.15, feature_names=[name])
+        features = jakteristics.compute_features(xyz, 0.15, feature_names=[name])
         index = FEATURE_NAMES.index(name)
 
         assert features.shape == (n_points, 1)
@@ -100,7 +100,7 @@ def test_write_extra_dims(tmp_path):
 
     xyz = las_utils.read_las_xyz(input_path)
 
-    features = extension.compute_features(xyz, 0.15, feature_names=FEATURE_NAMES)
+    features = jakteristics.compute_features(xyz, 0.15, feature_names=FEATURE_NAMES)
 
     las_utils.write_with_extra_dims(input_path, output_path, features, FEATURE_NAMES)
 
@@ -130,7 +130,7 @@ def test_wrong_shape():
     points = np.random.random((3, 1000))
 
     with pytest.raises(ValueError):
-        extension.compute_features(points, 0.15, feature_names=FEATURE_NAMES)
+        jakteristics.compute_features(points, 0.15, feature_names=FEATURE_NAMES)
 
 
 def test_nan():
@@ -216,7 +216,7 @@ def test_compute_scalars_stats():
     scalar_fields = [np.random.random(n_points) for _ in range(2)]
     radius = 0.2
     # Only test default args and shape
-    features_list = extension.compute_scalars_stats(points, radius, scalar_fields)
+    features_list = jakteristics.compute_scalars_stats(points, radius, scalar_fields)
     assert isinstance(features_list, list)
     assert len(features_list) == len(scalar_fields)
     assert features_list[0].shape == (n_points, 4)
@@ -228,7 +228,7 @@ def test_compute_scalars_stats_num_threads():
     points = np.random.random((n_points, 3)) * 10
     scalar_fields = [np.random.random(n_points) for _ in range(2)]
     radius = 0.2
-    features_list = extension.compute_scalars_stats(points, radius, scalar_fields, num_threads=2)
+    features_list = jakteristics.compute_scalars_stats(points, radius, scalar_fields, num_threads=2)
     assert isinstance(features_list, list)
     assert len(features_list) == len(scalar_fields)
     assert features_list[0].shape == (n_points, 4)
@@ -241,7 +241,7 @@ def test_compute_scalars_stats_kdtree():
     scalar_fields = [np.random.random(n_points) for _ in range(2)]
     radius = 0.2
     kdtree = jakteristics.cKDTree(points.copy())
-    features_list = extension.compute_scalars_stats(points, radius, scalar_fields, kdtree=kdtree)
+    features_list = jakteristics.compute_scalars_stats(points, radius, scalar_fields, kdtree=kdtree)
     assert isinstance(features_list, list)
     assert len(features_list) == len(scalar_fields)
     assert features_list[0].shape == (n_points, 4)
@@ -253,7 +253,7 @@ def test_compute_scalars_stats_euclidean_distance_false():
     points = np.random.random((n_points, 3)) * 10
     scalar_fields = [np.random.random(n_points) for _ in range(2)]
     radius = 0.2
-    features_list = extension.compute_scalars_stats(points, radius, scalar_fields, euclidean_distance=False)
+    features_list = jakteristics.compute_scalars_stats(points, radius, scalar_fields, euclidean_distance=False)
     assert isinstance(features_list, list)
     assert len(features_list) == len(scalar_fields)
     assert features_list[0].shape == (n_points, 4)
@@ -265,7 +265,7 @@ def test_compute_scalars_stats_eps():
     points = np.random.random((n_points, 3)) * 10
     scalar_fields = [np.random.random(n_points) for _ in range(2)]
     radius = 0.2
-    features_list = extension.compute_scalars_stats(points, radius, scalar_fields, eps=0.01)
+    features_list = jakteristics.compute_scalars_stats(points, radius, scalar_fields, eps=0.01)
     assert isinstance(features_list, list)
     assert len(features_list) == len(scalar_fields)
     assert features_list[0].shape == (n_points, 4)
