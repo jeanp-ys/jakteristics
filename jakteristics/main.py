@@ -100,7 +100,10 @@ def compute_scalars_stats(
         search_radius:
             The radius to query neighbors at each point.
         scalar_fields:
-            List of 1D numpy arrays, each with length n_points, containing scalar values.
+            List of 1D numpy arrays containing scalar values. When kdtree is provided,
+            each array must have length matching the kdtree size (number of points used
+            to build the kdtree). When kdtree is None, each array must have length 
+            matching the query points.
         kdtree:
             If None, the kdtree is computed from the list of points.
             Must be an instance of `jakteristics.cKDTree`.

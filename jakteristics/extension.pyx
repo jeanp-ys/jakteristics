@@ -449,15 +449,18 @@ def compute_scalars_stats(
     if kdtree is None:
         kdtree = cKDTree(points)
 
+    # Get the number of points in the kdtree for scalar field validation
+    cdef int64_t n_kdtree_points = kdtree.data.shape[0]
+
     # Validate and prepare all scalar fields as a single contiguous array
     cdef list valid_fields = []
     cdef np.ndarray[double, ndim=2] all_fields_array
     
     for field_obj in scalar_fields:
-        if isinstance(field_obj, np.ndarray) and field_obj.ndim == 1 and field_obj.shape[0] == n_points:
+        if isinstance(field_obj, np.ndarray) and field_obj.ndim == 1 and field_obj.shape[0] == n_kdtree_points:
             valid_fields.append(np.ascontiguousarray(field_obj, dtype=np.float64))
         else:
-            valid_fields.append(np.full(n_points, np.nan, dtype=np.float64))
+            raise ValueError(f"Each scalar field must be a 1D numpy array with length {n_kdtree_points} (matching kdtree size), but got shape {field_obj.shape if hasattr(field_obj, 'shape') else type(field_obj)}")
     
     # Create a single contiguous array for all fields (better cache performance)
     all_fields_array = np.column_stack(valid_fields)
