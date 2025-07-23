@@ -42,7 +42,7 @@ def test_cli_invalid_feature_name(temp_dir):
         ],
     )
     assert result.exit_code == 2
-    assert "invalid choice: bananas" in result.stdout
+    assert "invalid choice: bananas" in result.stderr
 
 
 def test_cli_run_basic(temp_dir):
