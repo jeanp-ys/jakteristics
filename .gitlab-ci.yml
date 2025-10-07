@@ -1,0 +1,50 @@
+stages:
+  - build
+  - publish
+
+variables:
+  PIP_DISABLE_PIP_VERSION_CHECK: "1"
+  CIBW_TEST_REQUIRES: "pytest"
+  CIBW_TEST_COMMAND: "pytest {project}/tests"
+
+build_linux_wheels:
+  stage: build
+  image: python:3.12
+  rules:
+    - if: $CI_COMMIT_TAG
+    - if: $CI_MERGE_REQUEST_ID
+    - if: $CI_COMMIT_BRANCH
+  script:
+    - python -m pip install --upgrade pip
+    - pip install cibuildwheel==2.18.1
+    - python -m cibuildwheel --output-dir wheelhouse
+  variables:
+    CIBW_BUILD: "cp3{8,9,10,11,12}-manylinux_x86_64"
+    CIBW_ARCHS_LINUX: "x86_64"
+  artifacts:
+    name: "$CI_JOB_NAME-wheelhouse"
+    when: always
+    expire_in: 1 week
+    paths:
+      - wheelhouse/
+
+publish:
+  stage: publish
+  image: python:latest
+  needs:
+    - job: build_linux_wheels
+      artifacts: true
+    - job: build_windows_wheels
+      artifacts: true
+  rules:
+    - if: $CI_COMMIT_TAG
+    - when: never
+  variables:
+    TWINE_USERNAME: "gitlab-ci-token"
+    TWINE_PASSWORD: "$CI_JOB_TOKEN"
+  script:
+    - pip install build twine
+    - python -m build
+    - mkdir -p dist
+    - cp wheelhouse/*.whl dist/
+    - python -m twine upload --repository-url "${CI_API_V4_URL}/projects/${CI_PROJECT_ID}/packages/pypi" dist/*
